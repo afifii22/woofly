@@ -22,22 +22,25 @@ class AuthController extends Controller
             'role' => 'customer',
         ]);
 
-        Auth::login($user);
+        return redirect()->route('login')->with('success', 'Registration successful! Please log in.');
 
-        return redirect('/')->with('success', 'Registration successful!');
        }
 
-    public function registerApi(Request $request)
+    public function login(Request $request)
     {
         $credentials = $request->validate([
             'email' => 'required|email',
             'password' => 'required',
         ]);
 
-        if (!Auth::attempt($credentials)) {
-            return session()->regenerate();
+        if (Auth::attempt($credentials)) {
+            $request->session()->regenerate();
 
-            return redirect('/')->with('success', 'Login successful!');
+        if (Auth::user()->role === 'owner') {
+            return redirect('/dashboard');
+        }
+
+            return redirect('/');
         }
 
         return back()->withErrors([

@@ -50,10 +50,12 @@ class AnabulController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    
+        public function show(Anabul $anabul)
     {
-        //
+        return view('anabul.show', compact('anabul'));
     }
+    
 
     /**
      * Show the form for editing the specified resource.
