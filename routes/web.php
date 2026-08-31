@@ -27,8 +27,25 @@ Route::get('/anabul', [AnabulController::class, 'index'])
 Route::middleware(['role:owner'])->group(function () {
 
     Route::get('/dashboard', function () {
-        return view('owner.dashboard');
+    $totalAnabul = \App\Models\Anabul::count();
+    $totalCustomer = \App\Models\User::where('role', 'customer')->count();
+    $totalPesanan = \App\Models\Order::count();
+    $menungguKonfirmasi = \App\Models\Order::where(
+        'status_pesanan',
+        'Menunggu Konfirmasi'
+    )->count();
+
+    return view('owner.dashboard', compact(
+        'totalAnabul',
+        'totalCustomer',
+        'totalPesanan',
+        'menungguKonfirmasi'
+    ));
     })->name('owner.dashboard');
+
+    // route untuk mengupdate profil owner
+    Route::put('/profil-owner', [AuthController::class, 'updateOwnerProfile'])
+    ->name('owner.profile.update');
 
     // CRUD Anabul untuk Owner
     Route::get('/anabul/create', [AnabulController::class, 'create'])
@@ -45,6 +62,11 @@ Route::middleware(['role:owner'])->group(function () {
 
     Route::delete('/anabul/{anabul}', [AnabulController::class, 'destroy'])
         ->name('anabul.destroy');
+
+    Route::get('/profil-owner', [AuthController::class, 'ownerProfile'])
+    ->name('owner.profile');
+
+
 });
 
 Route::get('/anabul/{anabul}', [AnabulController::class, 'show'])
@@ -55,4 +77,16 @@ Route::get('/anabul/{anabul}', [AnabulController::class, 'show'])
 Route::middleware(['role:customer'])->group(function () {
 // Order
     Route::resource('order', OrderController::class);
+// route untuk membatalkan pesanan
+    Route::patch('/order/{order}/cancel', [OrderController::class, 'cancel'])
+    ->name('order.cancel');
+// route untuk menampilkan halaman profil dan mengupdate profil
+    Route::get('/profil', [AuthController::class, 'profile'])
+    ->name('customer.profile');
+
+    Route::put('/profil', [AuthController::class, 'updateProfile'])
+    ->name('customer.profile.update');
 });
+
+//route untuk contact
+Route::get('/contact', function () {return view('contact');})->name('contact');

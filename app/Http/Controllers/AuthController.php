@@ -48,6 +48,64 @@ class AuthController extends Controller
         ])->onlyInput('email');
     }
 
+    public function profile()
+{
+    return view('customer.profile');
+}
+
+public function updateProfile(Request $request)
+{
+    $user = Auth::user();
+
+    $validated = $request->validate([
+        'nama' => 'required|string|max:128',
+        'email' => 'required|email|max:128|unique:users,email,' . $user->id,
+        'password' => 'nullable|min:6|confirmed',
+    ]);
+
+    $user->nama = $validated['nama'];
+    $user->email = $validated['email'];
+
+    if (!empty($validated['password'])) {
+        $user->password = bcrypt($validated['password']);
+    }
+
+    $user->save();
+
+    return redirect()
+        ->route('customer.profile')
+        ->with('success', 'Profil berhasil diperbarui.');
+}
+
+    public function ownerProfile()
+{
+    return view('owner.profile');
+}
+
+    public function updateOwnerProfile(Request $request)
+{
+    $user = Auth::user();
+
+    $validated = $request->validate([
+        'nama' => 'required|string|max:128',
+        'email' => 'required|email|max:128|unique:users,email,' . $user->id,
+        'password' => 'nullable|min:6|confirmed',
+    ]);
+
+    $user->nama = $validated['nama'];
+    $user->email = $validated['email'];
+
+    if (!empty($validated['password'])) {
+        $user->password = bcrypt($validated['password']);
+    }
+
+    $user->save();
+
+    return redirect()
+        ->route('owner.profile')
+        ->with('success', 'Profil berhasil diperbarui.');
+}
+
     public function logout(Request $request)
     {
         Auth::logout();

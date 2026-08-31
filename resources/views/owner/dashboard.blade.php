@@ -1,23 +1,40 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Dashboard owner - WOOFLY</title>
+    <title>Dashboard Owner - WOOFLY</title>
 </head>
 <body>
-    <h1>WOOFLY</h1>
-    <h2>Dashboard Owner</h2>
-
-    <p>Selamat datang, {{ Auth::user()->nama }}!</p>
-    <a href="{{ route('anabul.create') }}">Tambah Anabul</a>
-    <a href="{{ url('/') }}">Back To Home</a>
-
-    <form action="{{ route('logout') }}" method="POST">
-        @csrf
-        <button type="submit">Logout</button>
-    </form>
     
+    @include('layouts.owner-navbar')
+    @include('layouts.sidebar')
+
+    <main>
+        <h1>Dashboard Owner</h1>
+        <p>Selamat datang, {{ Auth::user()->nama }}!</p>
+
+        <div>
+            <h3>Total Anabul</h3>
+            <p>{{ $totalAnabul }}</p>
+        </div>
+
+        <div>
+            <h3>Total Customer</h3>
+            <p>{{ $totalCustomer }}</p>
+        </div>
+
+        <div>
+            <h3>Total Pesanan</h3>
+            <p>{{ $totalPesanan }}</p>
+        </div>
+
+        <div>
+            <h3>Pesanan Menunggu Konfirmasi</h3>
+            <p>{{ $menungguKonfirmasi }}</p>
+        </div>
+    </main>
+
 </body>
 </html>
+
+
+

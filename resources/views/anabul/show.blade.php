@@ -5,29 +5,8 @@
 </head>
 <body>
 
-    <nav>
-        <a href="{{ url('/') }}">WOOFLY</a>
-        <a href="{{ url('/') }}">Home</a>
-        <a href="{{ route('anabul.index') }}">Katalog</a>
+    @include('layouts.navbar')
 
-        @auth
-            @if (Auth::user()->role === 'customer')
-                <a href="{{ route('order.index') }}">Pesanan Saya</a>
-            @endif
-
-            @if (Auth::user()->role === 'owner')
-                <a href="{{ route('owner.dashboard') }}">Dashboard</a>
-            @endif
-
-            <form action="{{ route('logout') }}" method="POST" style="display:inline;">
-                @csrf
-                <button type="submit">Logout</button>
-            </form>
-        @else
-            <a href="{{ route('login') }}">Login</a>
-            <a href="{{ route('register') }}">Register</a>
-        @endauth
-    </nav>
 
     <hr>
 
@@ -77,6 +56,19 @@
     <br><br>
 
     <a href="{{ route('anabul.index') }}">← Kembali ke Katalog</a>
+    @if (!Auth::check())
+    {{-- Guest --}}
+    <a href="{{ route('login') }}">Pesan</a>
+
+@elseif (Auth::user()->role === 'customer')
+    {{-- Customer --}}
+    <a href="{{ route('order.create', ['anabul_id' => $anabul->id]) }}">
+        Pesan
+    </a>
+
+@elseif (Auth::user()->role === 'owner')
+    {{-- Owner: tidak menampilkan tombol Pesan --}}
+@endif
 
 </body>
 </html>
