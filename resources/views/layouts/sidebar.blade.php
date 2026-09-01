@@ -8,19 +8,19 @@
 
         <br><br>
 
-        <a href="{{ route('anabul.index') }}">
+        <a href="{{ route('owner.anabul.index') }}">
             Kelola Data Anabul
         </a>
 
         <br><br>
 
-        <a href="#">
+        <a href="{{ route('customer.index') }}">
             Kelola Data Customer
         </a>
 
         <br><br>
 
-        <a href="#">
+        <a href="{{ route('owner.order.index') }}">
             Kelola Pesanan
         </a>
 

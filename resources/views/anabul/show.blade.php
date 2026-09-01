@@ -44,13 +44,6 @@
                 Pesan Sekarang
             </a>
         @endif
-
-    @elseif (!Auth::check())
-
-        <a href="{{ route('login') }}">
-            Login untuk Memesan
-        </a>
-
     @endif
 
     <br><br>

@@ -43,7 +43,7 @@ class AnabulController extends Controller
         Anabul::create($validated);
 
         return redirect()
-            ->route('anabul.index')
+            ->route('owner.anabul.index')
             ->with('success', 'Data anabul berhasil ditambahkan.');
     }
 
@@ -86,8 +86,14 @@ class AnabulController extends Controller
         $anabul->update($validated);
 
         return redirect()
-            ->route('anabul.index')
+            ->route('owner.anabul.index')
             ->with('success', 'Data anabul berhasil diperbarui.');
+    }
+
+    public function ownerIndex()
+    {
+        $anabuls = Anabul::latest()->get();
+        return view('owner.anabul.index', compact('anabuls'));
     }
 
     /**
@@ -97,7 +103,7 @@ class AnabulController extends Controller
     {
         $anabul->delete();
         return redirect()
-            ->route('anabul.index')
+            ->route('owner.anabul.index')
             ->with('success', 'Data anabul berhasil dihapus.');
     }
 }
