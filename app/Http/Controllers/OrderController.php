@@ -26,8 +26,8 @@ class OrderController extends Controller
      */
     public function create(Request $request)
     {
-         $anabul = Anabul::findOrFail($request->anabul_id);
-         return view('order.create', compact('anabul'));
+        $anabul = Anabul::findOrFail($request->anabul_id);
+        return view('order.create', compact('anabul'));
     }
 
     /**
@@ -70,44 +70,14 @@ class OrderController extends Controller
      */
     public function show(Order $order)
     {
-        $order = Order::with(['customer', 'anabul'])->findOrFail($order->id);
+
+    if ($order->customer_id !== Auth::id()) {
+        abort(403);
+    }
+
+        $order->load(['customer', 'anabul']);
         return view('order.show', compact('order'));
-    }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Order $order)
-    {
-        $anabuls = Anabul::all();
-        return view('order.edit', compact('order', 'anabuls'));
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Order $order)
-    {
-        $validated = $request->validate([
-            'anabul_id' => 'required|exists:anabuls,id',
-            'no_hp' => 'required|string|max:16',
-            'metode_pembelian' => 'required|in:dijemput,diantar',
-            'tanggal_pengambilan' => 'nullable|date',
-            'waktu_pengambilan' => 'nullable',
-            'alamat_pengiriman' => 'nullable|string',
-            'estimasi_pengiriman' => 'nullable|string|max:50',
-            'metode_pembayaran' => 'required|in:transfer,cod',
-            'bukti_pembayaran' => 'nullable|string|max:255',
-            'catatan' => 'nullable|string',
-            'status_pesanan' => 'required|string|max:20',
-            'alasan_pembatalan' => 'nullable|string',
-        ]);
-
-        $order->update($validated);
-
-        return redirect()
-            ->route('order.index')
-            ->with('success', 'Data pesanan berhasil diperbarui.');
     }
 
   
@@ -116,7 +86,6 @@ class OrderController extends Controller
         if ($order->customer_id !== Auth::id()) {
             abort(403);
         }
-
         if ($order->status_pesanan !== 'Menunggu Konfirmasi') {
             return back()->with('error', 'Pesanan tidak dapat dibatalkan.');
         }
@@ -161,14 +130,4 @@ class OrderController extends Controller
             ->with('success', 'Status pesanan berhasil diperbarui.');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Order $order)
-    {
-        $order->delete();
-        return redirect()
-            ->route('order.index')
-            ->with('success', 'Data pesanan berhasil dihapus.');
-    }
 }

@@ -74,7 +74,7 @@ Route::get('/anabul/{anabul}', [AnabulController::class, 'show'])->name('anabul.
 // Area customer
 Route::middleware(['role:customer'])->group(function () {
 // Order
-    Route::resource('order', OrderController::class);
+    Route::resource('order', OrderController::class)->only(['index', 'create', 'store', 'show']);
 // route untuk membatalkan pesanan
     Route::patch('/order/{order}/cancel', [OrderController::class, 'cancel'])->name('order.cancel');
 // route untuk menampilkan halaman profil dan mengupdate profil
