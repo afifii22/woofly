@@ -1,1 +1,122 @@
 @import "../../node_modules/bootstrap/scss/bootstrap";
+
+/* =========================
+   WOOFLY NAVBAR
+========================= */
+
+.woofly-navbar {
+    background-color: #f8f3ed;
+    min-height: 80px;
+    border-bottom: 1px solid #eee4da;
+}
+
+.woofly-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #382017;
+    font-family: Georgia, serif;
+    font-size: 22px;
+    font-weight: 700;
+}
+
+.logo-circle {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background-color: #a8755c;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: Arial, sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.woofly-menu {
+    gap: 12px;
+}
+
+.woofly-menu .nav-link {
+    color: #382017;
+    font-size: 15px;
+    padding: 8px 18px !important;
+}
+
+.woofly-menu .nav-link:hover,
+.woofly-menu .nav-link.active {
+    color: #a8755c;
+}
+
+.woofly-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.woofly-search {
+    color: #8f6958;
+    font-size: 25px;
+    line-height: 1;
+}
+
+.woofly-search:hover {
+    color: #382017;
+}
+
+.nav-divider {
+    width: 1px;
+    height: 25px;
+    background-color: #ddd1c6;
+}
+
+.woofly-login {
+    color: #8f6958;
+    font-size: 15px;
+}
+
+.woofly-login:hover {
+    color: #382017;
+}
+
+.woofly-register {
+    background-color: #a8755c;
+    color: white;
+    padding: 10px 22px;
+    border-radius: 30px;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.woofly-register:hover {
+    background-color: #8f604c;
+    color: white;
+}
+
+.woofly-account {
+    border: none;
+    background: transparent;
+    color: #382017;
+    font-size: 14px;
+}
+
+.woofly-account:hover,
+.woofly-account:focus {
+    color: #a8755c;
+    background: transparent;
+}
+
+/* Mobile */
+@media (max-width: 991.98px) {
+    .woofly-menu {
+        margin-top: 15px;
+        gap: 0;
+    }
+
+    .woofly-right {
+        margin-top: 15px;
+        padding-bottom: 15px;
+        flex-wrap: wrap;
+    }
+}

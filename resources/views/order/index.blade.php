@@ -1,61 +1,141 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Pesanan Saya - WOOFLY</title>
-</head>
-<body>
+@extends('layouts.app')
 
-    @include('layouts.navbar')
+@section('content')
 
-    <h1>Pesanan Saya</h1>
+<div class="container py-5">
 
+    {{-- Judul --}}
+    <div class="text-center mb-5">
+        <h1 class="fw-bold">Pesanan Saya</h1>
+        <p class="text-muted">
+            Lihat dan pantau pesanan anabul kamu.
+        </p>
+    </div>
+
+
+    {{-- Pesan berhasil --}}
     @if (session('success'))
-        <p>{{ session('success') }}</p>
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
     @endif
+
 
     @if ($orders->isEmpty())
-        <p>Belum ada pesanan.</p>
-    @else
 
-        @foreach ($orders as $order)
+        {{-- Belum ada pesanan --}}
+        <div class="text-center py-5">
 
-            <hr>
+            <div class="fs-1 mb-3">
+                🐶
+            </div>
 
-            <h2>{{ $order->anabul->nama }}</h2>
+            <h4 class="fw-bold">
+                Belum ada pesanan
+            </h4>
 
-            <p>
-                Harga:
-                Rp {{ number_format($order->anabul->harga, 0, ',', '.') }}
+            <p class="text-muted">
+                Kamu belum memiliki pesanan anabul.
             </p>
 
-            <p>
-                Metode Pembelian:
-                {{ $order->metode_pembelian }}
-            </p>
-
-            <p>
-                Metode Pembayaran:
-                {{ $order->metode_pembayaran }}
-            </p>
-
-            <p>
-                Status:
-                <strong>{{ $order->status_pesanan }}</strong>
-            </p>
-
-            <a href="{{ route('order.show', $order->id) }}">
-                Lihat Detail
+            <a href="{{ route('anabul.index') }}"
+               class="btn woofly-register mt-2">
+                Lihat Katalog
             </a>
 
-        @endforeach
+        </div>
+
+    @else
+
+        {{-- Daftar Pesanan --}}
+        <div class="row g-4">
+
+            @foreach ($orders as $order)
+
+                <div class="col-md-6 col-lg-4">
+
+                    <div class="card h-100 border-0 shadow-sm rounded-4">
+
+                        <div class="card-body p-4">
+
+                            <h4 class="fw-bold mb-3">
+                                {{ $order->anabul->nama }}
+                            </h4>
+
+
+                            <p class="mb-2">
+                                <span class="text-muted">
+                                    Harga
+                                </span>
+                                <br>
+                                <strong>
+                                    Rp {{ number_format($order->anabul->harga, 0, ',', '.') }}
+                                </strong>
+                            </p>
+
+
+                            <p class="mb-2">
+                                <span class="text-muted">
+                                    Metode Pembelian
+                                </span>
+                                <br>
+                                <strong>
+                                    {{ $order->metode_pembelian }}
+                                </strong>
+                            </p>
+
+
+                            <p class="mb-2">
+                                <span class="text-muted">
+                                    Metode Pembayaran
+                                </span>
+                                <br>
+                                <strong>
+                                    {{ $order->metode_pembayaran }}
+                                </strong>
+                            </p>
+
+
+                            <p class="mb-4">
+                                <span class="text-muted">
+                                    Status
+                                </span>
+                                <br>
+
+                                <span class="badge bg-secondary">
+                                    {{ $order->status_pesanan }}
+                                </span>
+                            </p>
+
+
+                            <a href="{{ route('order.show', $order->id) }}"
+                               class="btn woofly-register w-100">
+                                Lihat Detail
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            @endforeach
+
+        </div>
 
     @endif
 
-    <br><br>
 
-    <a href="{{ route('anabul.index') }}">
-        Kembali ke Katalog
-    </a>
+    {{-- Kembali ke katalog --}}
+    <div class="text-center mt-5">
 
-</body>
-</html>
+        <a href="{{ route('anabul.index') }}"
+           class="text-decoration-none text-muted">
+            ← Kembali ke Katalog
+        </a>
+
+    </div>
+
+</div>
+
+@endsection

@@ -1,20 +1,24 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>WOOFLY - Home</title>
-</head>
-<body>
-    @include('layouts.navbar')
+@extends('layouts.app')
 
-    <hr>
+@section('content')
 
-    <main>
-        <h1>Selamat Datang di WOOFLY</h1>
+<div class="container py-5">
 
-        <p>Temukan anabul terbaik untuk menjadi temanmu.</p>
+    <div class="text-center py-5">
+        <h1 class="display-4 fw-bold">
+            Selamat Datang di WOOFLY
+        </h1>
 
-        <a href="{{ url('/anabul') }}">Lihat Katalog</a>
-    </main>
+        <p class="lead text-muted">
+            Temukan anabul terbaik untuk menjadi temanmu.
+        </p>
 
-</body>
-</html>
+        <a href="{{ route('anabul.index') }}"
+           class="btn woofly-register mt-3">
+            Lihat Katalog
+        </a>
+    </div>
+
+</div>
+
+@endsection

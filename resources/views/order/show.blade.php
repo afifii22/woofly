@@ -1,130 +1,244 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Detail Pesanan - WOOFLY</title>
-</head>
-<body>
+@extends('layouts.app')
 
-    @include('layouts.navbar')
+@section('content')
 
-    <h1>Detail Pesanan</h1>
+<div class="container py-5">
 
-    <hr>
-
-    <h2>Data Anabul</h2>
-
-    <p>
-        Nama:
-        {{ $order->anabul->nama }}
-    </p>
-
-    <p>
-        Ras:
-        {{ $order->anabul->ras }}
-    </p>
-
-    <p>
-        Jenis Kelamin:
-        {{ $order->anabul->jenis_kelamin }}
-    </p>
-
-    <p>
-        Harga:
-        Rp {{ number_format($order->anabul->harga, 0, ',', '.') }}
-    </p>
-
-    <hr>
-
-    <h2>Detail Pemesanan</h2>
-
-    <p>
-        No. HP:
-        {{ $order->no_hp }}
-    </p>
-
-    <p>
-        Metode Pembelian:
-        {{ $order->metode_pembelian }}
-    </p>
-
-    @if ($order->metode_pembelian === 'Diantar')
-
-        <p>
-            Alamat Pengiriman:
-            {{ $order->alamat_pengiriman }}
+    {{-- Judul --}}
+    <div class="text-center mb-5">
+        <h1 class="fw-bold">Detail Pesanan</h1>
+        <p class="text-muted">
+            Informasi lengkap pesanan anabul kamu.
         </p>
+    </div>
 
-    @elseif ($order->metode_pembelian === 'Diambil')
 
-        <p>
-            Tanggal Pengambilan:
-            {{ $order->tanggal_pengambilan }}
-        </p>
+    <div class="row g-4">
 
-        <p>
-            Waktu Pengambilan:
-            {{ $order->waktu_pengambilan }}
-        </p>
+        {{-- DATA ANABUL --}}
+        <div class="col-md-6">
 
-    @endif
+            <div class="card border-0 shadow-sm rounded-4 h-100">
 
-    <p>
-        Metode Pembayaran:
-        {{ $order->metode_pembayaran }}
-    </p>
+                <div class="card-body p-4">
 
-    @if ($order->metode_pembayaran === 'Transfer Bank' && $order->bukti_pembayaran)
+                    <h4 class="fw-bold mb-4">
+                        Data Anabul
+                    </h4>
 
-        <p>
-            Bukti Transfer:
-        </p>
+                    <div class="mb-3">
+                        <span class="text-muted">Nama</span>
+                        <div class="fw-semibold">
+                            {{ $order->anabul->nama }}
+                        </div>
+                    </div>
 
-        <img
-            src="{{ asset('storage/' . $order->bukti_pembayaran) }}"
-            width="300"
-            alt="Bukti Transfer"
-        >
+                    <div class="mb-3">
+                        <span class="text-muted">Ras</span>
+                        <div class="fw-semibold">
+                            {{ $order->anabul->ras }}
+                        </div>
+                    </div>
 
-    @elseif ($order->metode_pembayaran === 'COD')
+                    <div class="mb-3">
+                        <span class="text-muted">Jenis Kelamin</span>
+                        <div class="fw-semibold">
+                            {{ $order->anabul->jenis_kelamin }}
+                        </div>
+                    </div>
 
-        <p>
-            ⚠️ Pembayaran dilakukan secara tunai.
-        </p>
+                    <div>
+                        <span class="text-muted">Harga</span>
+                        <div class="fw-bold fs-5">
+                            Rp {{ number_format($order->anabul->harga, 0, ',', '.') }}
+                        </div>
+                    </div>
 
-    @endif
+                </div>
 
-    <p>
-        Catatan:
-        {{ $order->catatan ?: '-' }}
-    </p>
+            </div>
 
-    <p>
-        Status Pesanan:
-        <strong>{{ $order->status_pesanan }}</strong>
-    </p>
+        </div>
 
-    @if ($order->status_pesanan === 'Menunggu Konfirmasi')
-    <form action="{{ route('order.cancel', $order->id) }}" method="POST"
-          onsubmit="return confirm('Yakin ingin membatalkan pesanan ini?')">
-        @csrf
-        @method('PATCH')
 
-        <button type="submit">
-            Batalkan Pesanan
-        </button>
-    </form>
-    @endif
+        {{-- DETAIL PEMESANAN --}}
+        <div class="col-md-6">
 
-    <p>
-        Tanggal Pemesanan:
-        {{ $order->created_at->format('d-m-Y H:i') }}
-    </p>
+            <div class="card border-0 shadow-sm rounded-4 h-100">
 
-    <br>
+                <div class="card-body p-4">
 
-    <a href="{{ route('order.index') }}">
-        Kembali ke Pesanan Saya
-    </a>
+                    <h4 class="fw-bold mb-4">
+                        Detail Pemesanan
+                    </h4>
 
-</body>
-</html>
+                    <div class="mb-3">
+                        <span class="text-muted">No. HP</span>
+                        <div class="fw-semibold">
+                            {{ $order->no_hp }}
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <span class="text-muted">Metode Pembelian</span>
+                        <div class="fw-semibold">
+                            {{ $order->metode_pembelian }}
+                        </div>
+                    </div>
+
+
+                    @if ($order->metode_pembelian === 'Diantar')
+
+                        <div class="mb-3">
+                            <span class="text-muted">
+                                Alamat Pengiriman
+                            </span>
+
+                            <div class="fw-semibold">
+                                {{ $order->alamat_pengiriman }}
+                            </div>
+                        </div>
+
+                    @elseif ($order->metode_pembelian === 'Diambil')
+
+                        <div class="mb-3">
+                            <span class="text-muted">
+                                Tanggal Pengambilan
+                            </span>
+
+                            <div class="fw-semibold">
+                                {{ $order->tanggal_pengambilan }}
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <span class="text-muted">
+                                Waktu Pengambilan
+                            </span>
+
+                            <div class="fw-semibold">
+                                {{ $order->waktu_pengambilan }}
+                            </div>
+                        </div>
+
+                    @endif
+
+
+                    <div class="mb-3">
+                        <span class="text-muted">
+                            Metode Pembayaran
+                        </span>
+
+                        <div class="fw-semibold">
+                            {{ $order->metode_pembayaran }}
+                        </div>
+                    </div>
+
+
+                    @if ($order->metode_pembayaran === 'Transfer Bank' && $order->bukti_pembayaran)
+
+                        <div class="mb-3">
+
+                            <span class="text-muted d-block mb-2">
+                                Bukti Transfer
+                            </span>
+
+                            <img
+                                src="{{ asset('storage/' . $order->bukti_pembayaran) }}"
+                                class="img-fluid rounded-3"
+                                style="max-width: 300px;"
+                                alt="Bukti Transfer"
+                            >
+
+                        </div>
+
+                    @elseif ($order->metode_pembayaran === 'COD')
+
+                        <div class="alert alert-warning mt-3">
+                            ⚠️ Pembayaran dilakukan secara tunai.
+                        </div>
+
+                    @endif
+
+
+                    <div class="mb-3">
+                        <span class="text-muted">
+                            Catatan
+                        </span>
+
+                        <div class="fw-semibold">
+                            {{ $order->catatan ?: '-' }}
+                        </div>
+                    </div>
+
+
+                    <div class="mb-3">
+                        <span class="text-muted">
+                            Status Pesanan
+                        </span>
+
+                        <div class="mt-1">
+                            <span class="badge bg-secondary">
+                                {{ $order->status_pesanan }}
+                            </span>
+                        </div>
+                    </div>
+
+
+                    {{-- BATALKAN PESANAN --}}
+                    @if ($order->status_pesanan === 'Menunggu Konfirmasi')
+
+                        <form
+                            action="{{ route('order.cancel', $order->id) }}"
+                            method="POST"
+                            onsubmit="return confirm('Yakin ingin membatalkan pesanan ini?')"
+                            class="mt-4"
+                        >
+
+                            @csrf
+                            @method('PATCH')
+
+                            <button type="submit"
+                                    class="btn btn-danger w-100">
+                                Batalkan Pesanan
+                            </button>
+
+                        </form>
+
+                    @endif
+
+
+                    <div class="mt-4 pt-3 border-top">
+
+                        <span class="text-muted">
+                            Tanggal Pemesanan
+                        </span>
+
+                        <div class="fw-semibold">
+                            {{ $order->created_at->format('d-m-Y H:i') }}
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    {{-- KEMBALI --}}
+    <div class="text-center mt-5">
+
+        <a href="{{ route('order.index') }}"
+           class="text-decoration-none text-muted">
+            ← Kembali ke Pesanan Saya
+        </a>
+
+    </div>
+
+</div>
+
+@endsection

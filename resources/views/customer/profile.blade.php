@@ -1,72 +1,145 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Ubah Profil - WOOFLY</title>
-</head>
-<body>
+@extends('layouts.app')
 
-    @include('layouts.navbar')
+@section('content')
 
-    <h1>Ubah Profil</h1>
+<div class="container py-5">
 
-    @if (session('success'))
-        <p>{{ session('success') }}</p>
-    @endif
+    <div class="row justify-content-center">
 
-    @if ($errors->any())
-        @foreach ($errors->all() as $error)
-            <p>{{ $error }}</p>
-        @endforeach
-    @endif
+        <div class="col-md-7 col-lg-6">
 
-    <form action="{{ route('customer.profile.update') }}" method="POST">
-        @csrf
-        @method('PUT')
+            <div class="text-center mb-4">
+                <h1 class="fw-bold">Ubah Profil</h1>
+                <p class="text-muted">
+                    Perbarui informasi profil akun kamu.
+                </p>
+            </div>
 
-        <label>Nama</label><br>
-        <input
-            type="text"
-            name="nama"
-            value="{{ old('nama', Auth::user()->nama) }}"
-            required
-        >
 
-        <br><br>
+            {{-- Pesan berhasil --}}
+            @if (session('success'))
+                <div class="alert alert-success">
+                    {{ session('success') }}
+                </div>
+            @endif
 
-        <label>Email</label><br>
-        <input
-            type="email"
-            name="email"
-            value="{{ old('email', Auth::user()->email) }}"
-            required
-        >
 
-        <br><br>
+            {{-- Error --}}
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul class="mb-0">
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
 
-        <label>Password Baru</label><br>
-        <input
-            type="password"
-            name="password"
-            placeholder="Kosongkan jika tidak ingin mengubah"
-        >
 
-        <br><br>
+            {{-- Form --}}
+            <div class="card border-0 shadow-sm rounded-4">
 
-        <label>Konfirmasi Password Baru</label><br>
-        <input
-            type="password"
-            name="password_confirmation"
-            placeholder="Kosongkan jika tidak ingin mengubah"
-        >
+                <div class="card-body p-4 p-md-5">
 
-        <br><br>
+                    <form action="{{ route('customer.profile.update') }}"
+                          method="POST">
 
-        <button type="submit">Simpan Perubahan</button>
-    </form>
+                        @csrf
+                        @method('PUT')
 
-    <br>
 
-    <a href="{{ url('/') }}">Kembali ke Home</a>
+                        {{-- Nama --}}
+                        <div class="mb-3">
+                            <label for="nama" class="form-label fw-semibold">
+                                Nama
+                            </label>
 
-</body>
-</html>
+                            <input
+                                type="text"
+                                id="nama"
+                                name="nama"
+                                class="form-control"
+                                value="{{ old('nama', Auth::user()->nama) }}"
+                                required
+                            >
+                        </div>
+
+
+                        {{-- Email --}}
+                        <div class="mb-3">
+                            <label for="email" class="form-label fw-semibold">
+                                Email
+                            </label>
+
+                            <input
+                                type="email"
+                                id="email"
+                                name="email"
+                                class="form-control"
+                                value="{{ old('email', Auth::user()->email) }}"
+                                required
+                            >
+                        </div>
+
+
+                        {{-- Password Baru --}}
+                        <div class="mb-3">
+                            <label for="password" class="form-label fw-semibold">
+                                Password Baru
+                            </label>
+
+                            <input
+                                type="password"
+                                id="password"
+                                name="password"
+                                class="form-control"
+                                placeholder="Kosongkan jika tidak ingin mengubah"
+                            >
+                        </div>
+
+
+                        {{-- Konfirmasi Password --}}
+                        <div class="mb-4">
+                            <label for="password_confirmation"
+                                   class="form-label fw-semibold">
+                                Konfirmasi Password Baru
+                            </label>
+
+                            <input
+                                type="password"
+                                id="password_confirmation"
+                                name="password_confirmation"
+                                class="form-control"
+                                placeholder="Kosongkan jika tidak ingin mengubah"
+                            >
+                        </div>
+
+
+                        {{-- Tombol --}}
+                        <button type="submit"
+                                class="btn woofly-register w-100">
+                            Simpan Perubahan
+                        </button>
+
+                    </form>
+
+
+                    {{-- Kembali --}}
+                    <div class="text-center mt-3">
+                        <a href="{{ url('/') }}"
+                           class="text-decoration-none text-muted">
+                            ← Kembali ke Home
+                        </a>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+@endsection
