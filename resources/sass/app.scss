@@ -136,3 +136,218 @@
 .woofly-footer .border-secondary {
     border-color: #5a392c !important;
 }
+
+/* =========================
+   WOOFLY LOGIN
+========================= */
+
+.woofly-login-page {
+    min-height: calc(100vh - 80px);
+    background-color: #f8f3ed;
+    padding: 35px 20px 45px;
+}
+
+.woofly-login-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    color: #382017;
+    font-family: Georgia, serif;
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 25px;
+}
+
+.woofly-login-logo .logo-circle {
+    width: 28px;
+    height: 28px;
+    font-size: 13px;
+}
+
+.woofly-login-card {
+    max-width: 680px;
+    min-height: 360px;
+    margin: 0 auto;
+    background-color: white;
+    border-radius: 18px;
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    box-shadow: 0 8px 30px rgba(56, 32, 23, 0.08);
+}
+
+.woofly-login-form {
+    padding: 30px 35px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.woofly-login-form h1 {
+    color: #382017;
+    font-family: Georgia, serif;
+    font-size: 30px;
+    font-weight: 700;
+    margin-bottom: 6px;
+}
+
+.woofly-login-form > .text-center p {
+    color: #9a8c83;
+    font-size: 12px;
+    margin-bottom: 30px;
+}
+
+.woofly-login-form label {
+    display: block;
+    color: #382017;
+    font-size: 11px;
+    font-weight: 500;
+    margin-bottom: 7px;
+}
+
+.woofly-login-form .form-control {
+    height: 40px;
+    border: 1px solid #eee4da;
+    background-color: #f9f6f2;
+    border-radius: 6px;
+    color: #382017;
+    font-size: 12px;
+    padding: 10px 12px;
+}
+
+.woofly-login-form .form-control:focus {
+    border-color: #c9905b;
+    box-shadow: 0 0 0 2px rgba(201, 144, 91, 0.12);
+}
+
+.woofly-password {
+    position: relative;
+}
+
+.woofly-password .form-control {
+    padding-right: 40px;
+}
+
+.woofly-password button {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    border: none;
+    background: transparent;
+    color: #a79a91;
+    font-size: 13px;
+    cursor: pointer;
+}
+
+.woofly-forgot {
+    color: #c9905b;
+    font-size: 10px;
+    text-decoration: none;
+}
+
+.woofly-forgot:hover {
+    color: #382017;
+}
+
+.woofly-login-button {
+    width: 100%;
+    height: 42px;
+    border: none;
+    border-radius: 5px;
+    background-color: #c9905b;
+    color: white;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.woofly-login-button:hover {
+    background-color: #b77d4d;
+}
+
+.woofly-register-text {
+    text-align: center;
+    color: #8f8178;
+    font-size: 12px;
+    margin-top: 14px;
+}
+
+.woofly-register-text a {
+    color: #c9905b;
+    text-decoration: none;
+}
+
+.woofly-register-text a:hover {
+    color: #382017;
+}
+
+.woofly-login-image {
+    position: relative;
+    min-height: 360px;
+    overflow: hidden;
+}
+
+.woofly-login-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.woofly-image-caption {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 55px 20px 20px;
+    color: white;
+    background: linear-gradient(
+        transparent,
+        rgba(56, 32, 23, 0.8)
+    );
+    display: flex;
+    flex-direction: column;
+}
+
+.woofly-image-caption strong {
+    font-family: Georgia, serif;
+    font-size: 15px;
+    font-style: italic;
+}
+
+.woofly-image-caption span {
+    font-size: 12px;
+    opacity: 0.8;
+    margin-top: 4px;
+}
+
+.woofly-back-home {
+    text-align: center;
+    margin-top: 15px;
+}
+
+.woofly-back-home a {
+    color: #6f625b;
+    font-size: 12px;
+    text-decoration: none;
+}
+
+.woofly-back-home a:hover {
+    color: #382017;
+}
+
+@media (max-width: 767.98px) {
+    .woofly-login-card {
+        grid-template-columns: 1fr;
+    }
+
+    .woofly-login-image {
+        display: none;
+    }
+
+    .woofly-login-form {
+        padding: 45px 30px;
+    }
+}
