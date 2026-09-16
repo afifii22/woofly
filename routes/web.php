@@ -8,7 +8,7 @@ use App\Http\Controllers\CustomerController;
 
 
 Route::get('/', function () {
-    return view('home');
+    return view ('home');
 });
 
 // Authentication routes
@@ -85,3 +85,4 @@ Route::middleware(['role:customer'])->group(function () {
 
 //route untuk contact
 Route::get('/contact', function () {return view('contact');})->name('contact');
+

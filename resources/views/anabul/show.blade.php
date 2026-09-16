@@ -2,130 +2,188 @@
 
 @section('content')
 
-<div class="container py-5">
+<div class="woofly-detail-page">
 
-    <div class="row g-5 align-items-start">
+    {{-- KEMBALI KE KATALOG --}}
+    <div class="woofly-detail-top">
+        <a href="{{ route('anabul.index') }}" class="woofly-back-catalog">
+            ← &nbsp; Back to Catalog
+        </a>
+    </div>
 
-        {{-- FOTO ANABUL --}}
-        <div class="col-md-6">
+    {{-- CONTENT --}}
+    <div class="woofly-detail-container">
 
+        {{-- FOTO --}}
+        <div class="woofly-detail-left">
+
+            {{-- Foto utama --}}
+            <div class="woofly-detail-image">
+
+                @if ($anabul->foto)
+                    <img
+                        src="{{ asset('images/' . $anabul->foto) }}"
+                        alt="{{ $anabul->nama }}"
+                    >
+                @else
+                    <div class="woofly-detail-no-image">
+                        No Image Available
+                    </div>
+                @endif
+
+                <span class="woofly-detail-status">
+                    ● {{ $anabul->status_ketersediaan }}
+                </span>
+
+            </div>
+
+            {{-- 3 Foto kecil --}}
             @if ($anabul->foto)
-                <img src="{{ asset('storage/' . $anabul->foto) }}"
-                     alt="{{ $anabul->nama }}"
-                     class="img-fluid rounded-4 shadow-sm w-100"
-                     style="height: 450px; object-fit: cover;">
+                <div class="woofly-detail-thumbnails">
+
+                    <div class="woofly-detail-thumbnail active">
+                        <img
+                            src="{{ asset('images/' . $anabul->foto) }}"
+                            alt="{{ $anabul->nama }}"
+                        >
+                    </div>
+
+                    <div class="woofly-detail-thumbnail">
+                        <img
+                            src="{{ asset('images/' . $anabul->foto) }}"
+                            alt="{{ $anabul->nama }}"
+                        >
+                    </div>
+
+                    <div class="woofly-detail-thumbnail">
+                        <img
+                            src="{{ asset('images/' . $anabul->foto) }}"
+                            alt="{{ $anabul->nama }}"
+                        >
+                    </div>
+
+                </div>
             @endif
 
         </div>
 
 
-        {{-- DETAIL ANABUL --}}
-        <div class="col-md-6">
+        {{-- INFORMASI --}}
+        <div class="woofly-detail-right">
 
-            <h1 class="fw-bold mb-4">
-                {{ $anabul->nama }}
-            </h1>
+            <div class="woofly-detail-breed">
+                {{ strtoupper($anabul->ras) }}
+            </div>
 
-            <div class="mb-4">
+            <h1>{{ $anabul->nama }}</h1>
 
-                <div class="row mb-3">
-                    <div class="col-5 text-muted">Ras</div>
-                    <div class="col-7 fw-semibold">
-                        {{ $anabul->ras }}
-                    </div>
+            <div class="woofly-detail-price">
+                Rp {{ number_format($anabul->harga, 0, ',', '.') }}
+            </div>
+
+
+            {{-- DETAIL BOX --}}
+            <div class="woofly-detail-info-box">
+
+                <div>
+                    <span>BREED</span>
+                    <strong>{{ $anabul->ras }}</strong>
                 </div>
 
-                <div class="row mb-3">
-                    <div class="col-5 text-muted">Jenis Kelamin</div>
-                    <div class="col-7 fw-semibold">
-                        {{ $anabul->jenis_kelamin }}
-                    </div>
+                <div>
+                    <span>GENDER</span>
+                    <strong>{{ $anabul->jenis_kelamin }}</strong>
                 </div>
 
-                <div class="row mb-3">
-                    <div class="col-5 text-muted">Umur</div>
-                    <div class="col-7 fw-semibold">
-                        {{ $anabul->umur }} bulan
-                    </div>
+                <div>
+                    <span>AGE</span>
+                    <strong>{{ $anabul->umur }} bulan</strong>
                 </div>
 
-                <div class="row mb-3">
-                    <div class="col-5 text-muted">Warna</div>
-                    <div class="col-7 fw-semibold">
-                        {{ $anabul->warna }}
-                    </div>
+                <div>
+                    <span>COLOR</span>
+                    <strong>{{ $anabul->warna }}</strong>
                 </div>
 
-                <div class="row mb-3">
-                    <div class="col-5 text-muted">Harga</div>
-                    <div class="col-7 fw-bold">
-                        Rp {{ number_format($anabul->harga, 0, ',', '.') }}
-                    </div>
-                </div>
+                
 
-                <div class="row mb-3">
-                    <div class="col-5 text-muted">Kondisi</div>
-                    <div class="col-7 fw-semibold">
-                        {{ $anabul->kondisi }}
-                    </div>
-                </div>
-
-                <div class="row mb-3">
-                    <div class="col-5 text-muted">Status</div>
-                    <div class="col-7">
-                        <span class="badge bg-secondary">
-                            {{ $anabul->status_ketersediaan }}
-                        </span>
-                    </div>
+                <div>
+                    <span>STATUS</span>
+                    <strong class="woofly-detail-available">
+                        ● {{ $anabul->status_ketersediaan }}
+                    </strong>
                 </div>
 
             </div>
 
 
-            {{-- PESAN SEKARANG - CUSTOMER --}}
-            @if (Auth::check() && Auth::user()->role === 'customer')
+            {{-- TENTANG --}}
+            <div class="woofly-detail-about">
 
-                @if ($anabul->status_ketersediaan === 'tersedia')
-                    <a href="{{ route('order.create', ['anabul_id' => $anabul->id]) }}"
-                       class="btn woofly-register px-4">
-                        Pesan Sekarang
+                <h2>Tentang {{ $anabul->nama }}</h2>
+
+                <p>
+                    {{ $anabul->kondisi }}
+                </p>
+
+            </div>
+
+            {{-- SUDAH TERMASUK --}}
+            <div class="woofly-detail-included">
+
+            <h3>SUDAH TERMASUK</h3>
+
+            <div class="woofly-included-list">
+                <div>
+                    <span class="included-check">✓</span>
+                    <span>Pemeriksaan kesehatan awal</span>
+                </div>
+
+                <div>
+                    <span class="included-check">✓</span>
+                    <span>Vaksinasi pertama</span>
+                </div>
+
+                <div>
+                    <span class="included-check">✓</span>
+                    <span>Sertifikat kelahiran</span>
+                </div>
+
+                <div>
+                    <span class="included-check">✓</span>
+                    <span>Kit perawatan starter</span>
+                </div>
+            </div>
+
+        </div>
+
+
+            {{-- BUTTON PESAN --}}
+            @if ($anabul->status_ketersediaan == 'Tersedia')
+
+                @auth
+
+                    @if (auth()->user()->role === 'customer')
+                        <a
+                            href="{{ route('order.create', ['anabul_id' => $anabul->id]) }}"
+                            class="woofly-order-button"
+                        >
+                            PESAN SEKARANG
+                        </a>
+                    @endif
+
+                @else
+
+                    <a
+                        href="{{ route('login') }}"
+                        class="woofly-order-button"
+                    >
+                        PESAN SEKARANG
                     </a>
-                @endif
+
+                @endauth
 
             @endif
-
-
-            {{-- KEMBALI KE KATALOG --}}
-            <div class="mt-4">
-                <a href="{{ route('anabul.index') }}"
-                   class="btn btn-outline-secondary">
-                    ← Kembali ke Katalog
-                </a>
-            </div>
-
-
-            {{-- PUBLIC / CUSTOMER / OWNER --}}
-            <div class="mt-3">
-
-                @if (!Auth::check())
-                    {{-- Guest --}}
-                    <a href="{{ route('login') }}"
-                       class="btn woofly-register">
-                        Pesan
-                    </a>
-
-                @elseif (Auth::user()->role === 'customer')
-                    {{-- Customer --}}
-                    <a href="{{ route('order.create', ['anabul_id' => $anabul->id]) }}"
-                       class="btn woofly-register">
-                        Pesan
-                    </a>
-
-                @elseif (Auth::user()->role === 'owner')
-                    {{-- Owner: tidak menampilkan tombol Pesan --}}
-                @endif
-
-            </div>
 
         </div>
 
