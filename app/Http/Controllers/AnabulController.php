@@ -9,10 +9,16 @@ class AnabulController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $anabuls = Anabul::latest()->get();
-        return view('anabul.index', compact('anabuls'));
+        $search = $request->search;
+        $anabuls = Anabul::when($search, function ($query, $search) {
+            $query->where('ras', 'like', '%' . $search . '%');
+        })
+        ->latest()
+        ->get();
+
+        return view('anabul.index', compact('anabuls', 'search'));
     }
 
     /**

@@ -46,11 +46,27 @@
             {{-- Bagian kanan --}}
             <div class="woofly-right">
 
-                {{-- Search --}}
-                <a href="#" class="woofly-search text-decoration-none" title="Search">
-                    <span>⌕</span>
-                </a>
+                {{-- SEARCH --}}
+                <div class="woofly-search-wrapper">
+                    <button type="button" class="woofly-search-toggle" onclick="toggleSearch()" aria-label="Search">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </button>
 
+                    <form action="{{ route('anabul.index') }}" method="GET" class="woofly-search-form" id="wooflySearchForm">
+                        <input
+                            type="text"
+                            name="search"
+                            placeholder="Cari jenis anabul..."
+                            value="{{ request('search') }}"
+                            autocomplete="off">
+
+                        <button type="submit" aria-label="Submit Search">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </button>
+                    </form>
+                </div>
+                
+                {{-- LOGIN / REGISTER --}}
                 <span class="nav-divider"></span>
 
                 @guest

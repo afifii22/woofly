@@ -20,6 +20,18 @@
         @yield('content')
     </main>
 
+    <script>
+        function toggleSearch() {
+            const searchForm = document.getElementById('wooflySearchForm');
+
+            searchForm.classList.toggle('active');
+
+            if (searchForm.classList.contains('active')) {
+                searchForm.querySelector('input').focus();
+            }
+        }
+        </script>
+
     @include('layouts.footer')
 
 </body>

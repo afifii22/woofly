@@ -1,3 +1,4 @@
+@import "@fortawesome/fontawesome-free/css/all.css";
 @import "../../node_modules/bootstrap/scss/bootstrap";
 
 /* =========================
@@ -122,19 +123,369 @@
 }
 
 /* =========================
+   WOOFLY SEARCH
+========================= */
+
+.woofly-search-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-bottom: 8px;
+}
+
+.woofly-search-toggle {
+    width: 38px;
+    height: 38px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: none;
+    background-color: transparent;
+
+    color: #8f6958;
+    font-size: 18px;
+
+    cursor: pointer;
+}
+
+.woofly-search-toggle:hover {
+    color: #382017;
+}
+
+.woofly-search-form {
+    position: absolute;
+    right: 0;
+    top: 45px;
+
+    width: 260px;
+
+    display: none;
+    align-items: center;
+
+    padding: 5px;
+
+    background-color: #ffffff;
+    border: 1px solid #eee4da;
+    border-radius: 10px;
+
+    box-shadow: 0 8px 25px rgba(56, 32, 23, 0.12);
+
+    z-index: 1000;
+}
+
+.woofly-search-form.active {
+    display: flex;
+}
+
+.woofly-search-form input {
+    width: 100%;
+
+    border: none;
+    outline: none;
+
+    padding: 8px 10px;
+
+    background-color: transparent;
+
+    color: #382017;
+    font-size: 12px;
+}
+
+.woofly-search-form input::placeholder {
+    color: #a79a91;
+}
+
+.woofly-search-form button {
+    width: 32px;
+    height: 32px;
+
+    flex-shrink: 0;
+
+    border: none;
+    border-radius: 7px;
+
+    background-color: #c9905b;
+    color: white;
+
+    cursor: pointer;
+}
+
+.woofly-search-form button:hover {
+    background-color: #b77d4d;
+}
+
+
+/* MOBILE SEARCH */
+@media (max-width: 767.98px) {
+
+    .woofly-search-wrapper {
+        margin-right: 10px;
+    }
+
+    .woofly-search-form {
+        right: -5px;
+        width: 230px;
+    }
+
+}
+
+/* =========================
    WOOFLY FOOTER
 ========================= */
 
 .woofly-footer {
+    position: relative;
+    margin-top: 60px;
+    padding: 55px 0 25px;
     background-color: #382017;
+    color: #ffffff;
 }
 
-.woofly-footer a:hover {
-    color: #d6a98c !important;
+.woofly-footer .container {
+    position: relative;
 }
 
-.woofly-footer .border-secondary {
-    border-color: #5a392c !important;
+
+/* =========================
+   BRAND
+========================= */
+
+.woofly-footer-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    margin-bottom: 18px;
+
+    color: #ffffff !important;
+    font-family: Georgia, serif;
+    font-size: 25px;
+    font-weight: 700;
+}
+
+.woofly-footer-brand .logo-circle {
+    width: 34px;
+    height: 34px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background-color: #c9905b;
+    color: #ffffff !important;
+
+    font-family: Arial, sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+
+/* =========================
+   DESKRIPSI
+========================= */
+
+.woofly-footer-desc {
+    max-width: 380px;
+
+    margin-bottom: 22px;
+
+    color: rgba(255, 255, 255, 0.65) !important;
+    font-size: 13px;
+    line-height: 1.8;
+}
+
+
+/* =========================
+   SOCIAL MEDIA
+========================= */
+
+.woofly-social {
+    display: flex;
+    gap: 10px;
+}
+
+.woofly-social a {
+    width: 38px;
+    height: 38px;
+
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+
+    margin: 0 !important;
+
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+
+    background-color: transparent;
+
+    color: rgba(255, 255, 255, 0.8) !important;
+    text-decoration: none !important;
+
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.woofly-social a:hover {
+    background-color: #c9905b;
+    border-color: #c9905b;
+
+    color: #ffffff !important;
+}
+
+
+/* =========================
+   JUDUL KOLOM
+========================= */
+
+.woofly-footer-title {
+    margin-bottom: 20px;
+
+    color: #c9905b !important;
+
+    font-size: 12px;
+    letter-spacing: 1.5px;
+    font-weight: 700;
+}
+
+
+/* =========================
+   NAVIGATION
+========================= */
+
+.woofly-footer a:not(.woofly-social a):not(.woofly-back-top) {
+    display: block;
+
+    margin-bottom: 12px;
+
+    color: rgba(255, 255, 255, 0.65) !important;
+    text-decoration: none !important;
+
+    font-size: 13px;
+}
+
+.woofly-footer a:not(.woofly-social a):not(.woofly-back-top):hover {
+    color: #c9905b !important;
+}
+
+
+/* =========================
+   CONTACT
+========================= */
+
+.woofly-footer-contact {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    margin-bottom: 14px;
+
+    color: rgba(255, 255, 255, 0.65) !important;
+
+    font-size: 13px;
+}
+
+.woofly-footer-contact span {
+    width: 18px;
+
+    color: #c9905b !important;
+
+    text-align: center;
+}
+
+
+/* =========================
+   GARIS
+========================= */
+
+.woofly-footer-line {
+    height: 1px;
+
+    margin: 35px 0 22px;
+
+    background-color: rgba(255, 255, 255, 0.12);
+}
+
+
+/* =========================
+   FOOTER BOTTOM
+========================= */
+
+.woofly-footer-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 15px;
+}
+
+.woofly-footer-bottom small {
+    color: rgba(255, 255, 255, 0.5) !important;
+
+    font-size: 11px;
+}
+
+
+/* =========================
+   BACK TO TOP
+========================= */
+
+.woofly-back-top {
+    position: absolute;
+
+    right: 30px;
+    bottom: 25px;
+
+    width: 42px;
+    height: 42px;
+
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+
+    margin: 0 !important;
+
+    border-radius: 50%;
+
+    background-color: #c9905b;
+
+    color: #ffffff !important;
+    text-decoration: none !important;
+
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.woofly-back-top:hover {
+    background-color: #b77d4d;
+    color: #ffffff !important;
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 767.98px) {
+
+    .woofly-footer {
+        padding: 45px 20px 25px;
+    }
+
+    .woofly-footer-bottom {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .woofly-back-top {
+        right: 20px;
+        bottom: 75px;
+    }
 }
 
 /* =========================
