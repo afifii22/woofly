@@ -11,6 +11,12 @@
     border-bottom: 1px solid #eee4da;
 }
 
+.woofly-navbar .container {
+    max-width: 100%;
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
 .woofly-logo {
     display: flex;
     align-items: center;
@@ -19,6 +25,7 @@
     font-family: Georgia, serif;
     font-size: 22px;
     font-weight: 700;
+    margin-right: auto;
 }
 
 .logo-circle {
@@ -1547,4 +1554,1523 @@
     .woofly-detail-thumbnail {
         height: 85px;
     }
+}
+
+/* =========================
+   WOOFLY ORDER PAGE
+========================= */
+
+.woofly-order-page {
+    min-height: 100vh;
+    background: #faf8f1;
+}
+
+.woofly-order-title {
+    color: #382017;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: clamp(30px, 4vw, 42px);
+}
+
+.woofly-order-card {
+    background: #ffffff;
+    border: 1px solid #dedbd6 !important;
+}
+
+.woofly-order-section {
+    padding: 25px;
+    border: 1px solid #dedbd6;
+    border-radius: 18px;
+    background: #ffffff;
+}
+
+.woofly-step-number {
+    width: 30px;
+    height: 30px;
+    min-width: 30px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: #ffe5cc;
+    color: #b45f14;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.woofly-order-section h4 {
+    color: #382017;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 17px;
+}
+
+
+/* ANABUL */
+
+.woofly-anabul-box {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    padding: 10px;
+    border: 1px solid #dedbd6;
+    border-radius: 10px;
+}
+
+.woofly-anabul-image {
+    width: 65px;
+    height: 65px;
+    min-width: 65px;
+    overflow: hidden;
+    border-radius: 8px;
+    background: #eee8df;
+}
+
+.woofly-anabul-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.woofly-anabul-breed {
+    color: #a65300;
+    font-weight: 700;
+    font-size: 13px;
+}
+
+.woofly-anabul-price {
+    color: #a65300;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+
+/* FORM */
+
+.woofly-form-label {
+    color: #c16e20;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.woofly-form-label span {
+    color: #a65300;
+}
+
+.woofly-form-control {
+    min-height: 44px;
+    border-color: #d8d4cf;
+    border-radius: 8px;
+    color: #382017;
+    font-size: 13px;
+}
+
+.woofly-form-control:focus {
+    border-color: #c9905b;
+    box-shadow: 0 0 0 .2rem rgba(201, 144, 91, .12);
+}
+
+
+/* PAYMENT */
+
+.woofly-payment-box {
+    padding: 20px;
+    border: 1px solid #dedbd6;
+    border-radius: 16px;
+}
+
+.woofly-payment-title {
+    margin-bottom: 18px;
+    color: #c16e20;
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.woofly-payment-label {
+    display: block;
+    margin-bottom: 5px;
+    color: #b45f14;
+    font-size: 11px;
+}
+
+.woofly-payment-box strong {
+    color: #382017;
+    font-size: 13px;
+}
+
+
+/* COD */
+
+.woofly-cod-box {
+    padding: 22px;
+    border: 1px solid #e5cf92;
+    border-radius: 16px;
+    background: #fff7dc;
+}
+
+.woofly-cod-icon {
+    color: #a65300;
+    font-size: 22px;
+}
+
+.woofly-cod-box strong {
+    color: #382017;
+    font-size: 14px;
+}
+
+.woofly-cod-box p {
+    color: #a65300;
+    font-size: 12px;
+    line-height: 1.6;
+}
+
+
+/* TOTAL */
+
+.woofly-order-total {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 18px 22px;
+    border: 1px solid #ead69b;
+    border-radius: 10px;
+    background: #fff4cf;
+}
+
+.woofly-order-total span {
+    color: #382017;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.woofly-order-total strong {
+    color: #382017;
+    font-size: 16px;
+}
+
+
+/* BUTTON */
+
+.woofly-order-button {
+    border: none;
+    background: #a65300;
+    color: #ffffff;
+}
+
+.woofly-order-button:hover {
+    background: #8f4700;
+    color: #ffffff;
+}
+
+/* =========================
+   ORDER ACTION BUTTONS
+========================= */
+
+.woofly-order-page .row.g-3.mt-2 {
+    align-items: center;
+}
+
+.woofly-order-page .row.g-3.mt-2 .btn {
+    width: 100%;
+    min-height: 52px;
+    height: 52px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+}
+
+
+/* RESPONSIVE */
+
+@media (max-width: 767.98px) {
+
+    .woofly-order-page {
+        padding-top: 35px !important;
+        padding-bottom: 50px !important;
+    }
+
+    .woofly-order-section {
+        padding: 18px;
+        border-radius: 14px;
+    }
+
+    .woofly-anabul-box {
+        flex-wrap: wrap;
+    }
+
+    .woofly-anabul-price {
+        width: 100%;
+        padding-left: 83px;
+    }
+
+    .woofly-order-total {
+        padding: 15px;
+    }
+
+}
+
+
+/* =========================
+   WOOFLY - PESANAN SAYA
+========================= */
+
+.woofly-my-order-page {
+    min-height: calc(100vh - 100px);
+    padding: 55px 0 90px;
+    background-color: #faf8f1;
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+.woofly-my-order-header {
+    margin-bottom: 60px;
+    padding-left: 5px;
+}
+
+.woofly-my-order-header h1 {
+    margin: 0 0 10px;
+    color: #382017;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: clamp(38px, 4vw, 48px);
+    font-weight: 700;
+}
+
+.woofly-my-order-header p {
+    margin: 0;
+    color: #a65300;
+    font-size: 15px;
+}
+
+
+/* =========================
+   LIST
+========================= */
+
+.woofly-order-list {
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+}
+
+
+/* =========================
+   ORDER CARD
+========================= */
+
+.woofly-my-order-card {
+    width: 100%;
+    min-height: 170px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 25px;
+
+    padding: 15px 30px;
+
+    border: 1.5px solid #4d4d4d;
+    border-radius: 27px;
+
+    background-color: #ffffff;
+
+    box-sizing: border-box;
+}
+
+
+/* =========================
+   IMAGE
+========================= */
+
+.woofly-my-order-image {
+    width: 155px;
+    height: 140px;
+
+    flex-shrink: 0;
+
+    overflow: hidden;
+
+    border: 1px solid #aaa;
+    border-radius: 17px;
+
+    background-color: #eee8df;
+}
+
+.woofly-my-order-image img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+}
+
+.woofly-order-no-image {
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: #8f6958;
+    font-size: 12px;
+}
+
+
+/* =========================
+   ORDER INFORMATION
+========================= */
+
+.woofly-my-order-info {
+    flex: 1;
+    min-width: 0;
+
+    align-self: stretch;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.woofly-my-order-info h2 {
+    margin: 0 0 4px;
+
+    color: #382017;
+
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 23px;
+    font-weight: 700;
+}
+
+.woofly-my-order-info h3 {
+    margin: 0 0 7px;
+
+    color: #382017;
+
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 19px;
+    font-weight: 700;
+}
+
+.woofly-my-order-breed {
+    margin: 0 0 24px;
+
+    color: #a65300;
+
+    font-size: 17px;
+    font-weight: 500;
+}
+
+
+/* =========================
+   DATE + PRICE
+========================= */
+
+.woofly-my-order-meta {
+    display: flex;
+    align-items: center;
+
+    gap: 22px;
+}
+
+.woofly-my-order-meta span {
+    color: #777;
+
+    font-size: 16px;
+}
+
+.woofly-my-order-meta strong {
+    color: #a65300;
+
+    font-size: 20px;
+}
+
+
+/* =========================
+   RIGHT SIDE
+========================= */
+
+.woofly-my-order-right {
+    min-width: 230px;
+
+    align-self: stretch;
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 5px 0;
+}
+
+
+/* =========================
+   STATUS
+========================= */
+
+.woofly-order-status {
+    min-width: 160px;
+
+    padding: 6px 20px;
+
+    border: 1px solid;
+    border-radius: 30px;
+
+    text-align: center;
+
+    font-size: 13px;
+    font-weight: 500;
+}
+
+
+/* MENUNGGU */
+
+.woofly-order-status.waiting {
+    border-color: #ff9d35;
+
+    background-color: #fff1df;
+
+    color: #f28a18;
+}
+
+
+/* DIKONFIRMASI */
+
+.woofly-order-status.confirmed {
+    border-color: #78ef19;
+
+    background-color: #efffdc;
+
+    color: #43a800;
+}
+
+
+/* SELESAI */
+
+.woofly-order-status.completed {
+    border-color: #b79a65;
+
+    background-color: #fff5d3;
+
+    color: #72552e;
+}
+
+
+/* DIBATALKAN / DITOLAK */
+
+.woofly-order-status.cancelled,
+.woofly-order-status.rejected {
+    border-color: #ff5252;
+
+    background-color: #ffe0e0;
+
+    color: #d62929;
+}
+
+
+/* DEFAULT */
+
+.woofly-order-status.default {
+    border-color: #c9905b;
+
+    background-color: #f9eee3;
+
+    color: #8f6958;
+}
+
+
+/* =========================
+   DETAIL PESANAN
+========================= */
+
+.woofly-order-detail-link {
+    color: #a65300;
+
+    font-size: 17px;
+    font-weight: 500;
+
+    text-decoration: none;
+
+    white-space: nowrap;
+}
+
+.woofly-order-detail-link:hover {
+    color: #382017;
+}
+
+
+/* =========================
+   EMPTY
+========================= */
+
+.woofly-order-empty {
+    padding: 80px 20px;
+
+    border: 1px solid #ddd8d1;
+    border-radius: 25px;
+
+    background-color: #ffffff;
+
+    text-align: center;
+}
+
+.woofly-empty-icon {
+    margin-bottom: 20px;
+
+    font-size: 45px;
+}
+
+.woofly-order-empty h4 {
+    margin-bottom: 10px;
+
+    color: #382017;
+
+    font-family: Georgia, "Times New Roman", serif;
+}
+
+.woofly-order-empty p {
+    margin-bottom: 25px;
+
+    color: #8f6958;
+}
+
+.woofly-empty-button {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 11px 25px;
+
+    border-radius: 8px;
+
+    background-color: #a65300;
+
+    color: #ffffff;
+
+    font-size: 13px;
+    font-weight: 700;
+
+    text-decoration: none;
+}
+
+.woofly-empty-button:hover {
+    background-color: #8f4700;
+    color: #ffffff;
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 991.98px) {
+
+    .woofly-my-order-card {
+        gap: 18px;
+
+        padding: 15px 20px;
+    }
+
+    .woofly-my-order-image {
+        width: 125px;
+        height: 120px;
+    }
+
+    .woofly-my-order-right {
+        min-width: 190px;
+    }
+
+    .woofly-order-status {
+        min-width: 140px;
+    }
+
+}
+
+
+@media (max-width: 767.98px) {
+
+    .woofly-my-order-page {
+        padding: 40px 0 60px;
+    }
+
+    .woofly-my-order-header {
+        margin-bottom: 35px;
+    }
+
+    .woofly-my-order-header h1 {
+        font-size: 34px;
+    }
+
+    .woofly-order-list {
+        gap: 25px;
+    }
+
+    .woofly-my-order-card {
+        min-height: auto;
+
+        flex-wrap: wrap;
+
+        padding: 18px;
+
+        border-radius: 20px;
+    }
+
+    .woofly-my-order-image {
+        width: 105px;
+        height: 105px;
+    }
+
+    .woofly-my-order-info {
+        flex: 1;
+    }
+
+    .woofly-my-order-info h2 {
+        font-size: 17px;
+    }
+
+    .woofly-my-order-info h3 {
+        font-size: 16px;
+    }
+
+    .woofly-my-order-breed {
+        margin-bottom: 12px;
+
+        font-size: 14px;
+    }
+
+    .woofly-my-order-meta {
+        gap: 12px;
+
+        flex-wrap: wrap;
+    }
+
+    .woofly-my-order-meta span {
+        font-size: 13px;
+    }
+
+    .woofly-my-order-meta strong {
+        font-size: 16px;
+    }
+
+    .woofly-my-order-right {
+        width: 100%;
+        min-width: 0;
+        min-height: 80px;
+
+        flex-direction: row;
+
+        align-items: center;
+
+        padding: 5px 0 0;
+    }
+
+    .woofly-order-status {
+        min-width: auto;
+
+        padding: 5px 15px;
+    }
+
+    .woofly-order-detail-link {
+        font-size: 14px;
+    }
+
+}
+
+/* =========================
+   WOOFLY - DETAIL PESANAN
+========================= */
+
+.woofly-order-detail-page {
+    min-height: calc(100vh - 100px);
+    padding: 25px 0 80px;
+    background-color: #faf8f1;
+}
+
+
+/* =========================
+   BACK
+========================= */
+
+.woofly-detail-back {
+    margin: 0 0 25px;
+    padding-left: 5px;
+}
+
+.woofly-detail-back a {
+    color: #a65300;
+    font-size: 14px;
+    text-decoration: none;
+}
+
+.woofly-detail-back a:hover {
+    color: #382017;
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+.woofly-detail-header {
+    margin: 0 0 38px;
+    padding-left: 5px;
+}
+
+.woofly-detail-header h1 {
+    margin: 0 0 10px;
+    color: #382017;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: clamp(38px, 4vw, 48px);
+    font-weight: 700;
+}
+
+.woofly-detail-header p {
+    margin: 0;
+    color: #a65300;
+    font-size: 15px;
+}
+
+
+/* =========================
+   ANABUL CARD
+========================= */
+
+.woofly-detail-anabul {
+    width: 100%;
+    margin-bottom: 25px;
+    overflow: hidden;
+    border: 1.5px solid #4d4d4d;
+    border-radius: 25px;
+    background-color: #ffffff;
+}
+
+
+.woofly-detail-anabul-main {
+    min-height: 110px;
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    padding: 12px 38px;
+}
+
+
+/* IMAGE */
+
+.woofly-detail-order-image {
+    width: 115px;
+    height: 80px;
+    flex-shrink: 0;
+    overflow: hidden;
+    border: 1px solid #999;
+    border-radius: 12px;
+    background-color: #eee8df;
+}
+
+.woofly-detail-order-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
+/* INFO */
+
+.woofly-detail-anabul-info {
+    flex: 1;
+}
+
+.woofly-detail-anabul-info h2 {
+    margin: 0 0 3px;
+    color: #382017;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 19px;
+    font-weight: 700;
+}
+
+.woofly-detail-anabul-info p {
+    margin: 0;
+    color: #a65300;
+    font-size: 15px;
+}
+
+
+/* PRICE */
+
+.woofly-detail-anabul-price {
+    min-width: 210px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 13px;
+}
+
+.woofly-detail-anabul-price strong {
+    color: #a65300;
+    font-size: 20px;
+}
+
+
+/* STATUS */
+
+.woofly-order-status {
+    display: inline-block;
+    min-width: 160px;
+    padding: 5px 16px;
+    border: 1px solid;
+    border-radius: 30px;
+    text-align: center;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.woofly-order-status.waiting {
+    border-color: #ff9d35;
+    background-color: #fff1df;
+    color: #f28a18;
+}
+
+.woofly-order-status.confirmed {
+    border-color: #78ef19;
+    background-color: #efffdc;
+    color: #43a800;
+}
+
+.woofly-order-status.completed {
+    border-color: #b79a65;
+    background-color: #fff5d3;
+    color: #72552e;
+}
+
+.woofly-order-status.cancelled,
+.woofly-order-status.rejected {
+    border-color: #ff5252;
+    background-color: #ffe0e0;
+    color: #d62929;
+}
+
+.woofly-order-status.default {
+    border-color: #c9905b;
+    background-color: #f9eee3;
+    color: #8f6958;
+}
+
+
+/* BOTTOM */
+
+.woofly-detail-anabul-bottom {
+    min-height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+    padding: 8px 40px;
+    border-top: 1px solid #ddd;
+}
+
+.woofly-detail-anabul-bottom div {
+    display: flex;
+    align-items: center;
+    gap: 35px;
+}
+
+.woofly-detail-anabul-bottom span {
+    color: #a65300;
+    font-size: 14px;
+}
+
+.woofly-detail-anabul-bottom strong {
+    color: #382017;
+    font-size: 14px;
+}
+
+
+/* =========================
+   INFORMATION BOX
+========================= */
+
+.woofly-detail-box {
+    width: 100%;
+    margin-bottom: 25px;
+    padding: 15px 28px 22px;
+    border: 1.5px solid #4d4d4d;
+    border-radius: 25px;
+    background-color: #ffffff;
+}
+
+
+/* TITLE */
+
+.woofly-detail-box-title {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #ddd;
+}
+
+.woofly-detail-box-title i {
+    width: 30px;
+    color: #000000;
+    font-size: 22px;
+    text-align: center;
+}
+
+.woofly-detail-box-title h2 {
+    margin: 0;
+    color: #111111;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+
+/* ROW */
+
+.woofly-detail-row {
+    min-height: 42px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 30px;
+    padding: 7px 40px;
+    border-bottom: 1px solid #ddd;
+}
+
+.woofly-detail-row:last-child {
+    border-bottom: none;
+}
+
+.woofly-detail-row span {
+    color: #a65300;
+    font-size: 14px;
+}
+
+.woofly-detail-row strong {
+    color: #a65300;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+
+/* =========================
+   COD
+========================= */
+
+.woofly-cod-info {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    margin-top: 15px;
+    padding: 18px 20px;
+    border: 1px solid #edcf7d;
+    border-radius: 15px;
+    background-color: #fff4d5;
+}
+
+.woofly-cod-info i {
+    color: #a65300;
+    font-size: 22px;
+}
+
+.woofly-cod-info strong {
+    color: #382017;
+}
+
+.woofly-cod-info p {
+    margin: 5px 0 0;
+    color: #a65300;
+    font-size: 13px;
+}
+
+
+/* =========================
+   NOTE
+========================= */
+
+.woofly-detail-note {
+    margin-top: 15px;
+    padding: 15px 20px;
+    border-radius: 12px;
+    background-color: #faf8f1;
+    color: #382017;
+    font-size: 14px;
+}
+
+
+/* =========================
+   STATUS TIMELINE
+========================= */
+
+.woofly-status-box {
+    width: 100%;
+    margin-bottom: 25px;
+    padding: 25px 35px 30px;
+    border: 1.5px solid #4d4d4d;
+    border-radius: 28px;
+    background-color: #ffffff;
+}
+
+.woofly-status-box h2 {
+    margin: 0 0 35px;
+    color: #111111;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+
+/* TIMELINE */
+
+.woofly-status-timeline {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    margin: 0 40px;
+}
+
+
+/* LINE */
+
+.woofly-status-timeline::before {
+    content: "";
+    position: absolute;
+    top: 20px;
+    left: 12.5%;
+    right: 12.5%;
+    height: 1px;
+    background-color: #e5c26b;
+}
+
+
+/* STEP */
+
+.woofly-status-step {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+
+/* CIRCLE */
+
+.woofly-status-circle {
+    width: 42px;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 8px;
+    border: 1px solid #e8d6aa;
+    border-radius: 50%;
+    background-color: #fff4d5;
+    color: #382017;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+
+/* ACTIVE */
+
+.woofly-status-step.active .woofly-status-circle {
+    border-color: #a65300;
+    background-color: #a65300;
+    color: #ffffff;
+}
+
+
+/* DONE */
+
+.woofly-status-step.done .woofly-status-circle {
+    border-color: #a65300;
+    background-color: #a65300;
+    color: #ffffff;
+}
+
+
+.woofly-status-step strong {
+    color: #111111;
+    font-size: 17px;
+}
+
+.woofly-status-step small {
+    margin-top: 5px;
+    color: #777;
+    font-size: 12px;
+}
+
+
+/* CANCELLED */
+
+.woofly-cancelled-status {
+    margin-top: 25px;
+    padding: 13px 18px;
+    border: 1px solid #ffb0b0;
+    border-radius: 10px;
+    background-color: #ffe9e9;
+    color: #b52b2b;
+    font-size: 13px;
+}
+
+.woofly-cancelled-status span {
+    display: block;
+    margin-top: 5px;
+}
+
+
+/* CANCEL BUTTON */
+
+.woofly-cancel-form {
+    margin-top: 28px;
+}
+
+.woofly-cancel-form button {
+    min-width: 215px;
+    height: 42px;
+    padding: 0 25px;
+    border: 1px solid #ff5656;
+    border-radius: 8px;
+    background-color: #ffd2d2;
+    color: #c52b2b;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.woofly-cancel-form button:hover {
+    background-color: #ffc1c1;
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 767.98px) {
+
+    .woofly-order-detail-page {
+        padding: 30px 0 60px;
+    }
+
+    .woofly-detail-header h1 {
+        font-size: 34px;
+    }
+
+    .woofly-detail-anabul-main {
+        flex-wrap: wrap;
+        padding: 18px;
+    }
+
+    .woofly-detail-order-image {
+        width: 95px;
+        height: 80px;
+    }
+
+    .woofly-detail-anabul-info {
+        flex: 1;
+    }
+
+    .woofly-detail-anabul-price {
+        width: 100%;
+        min-width: 0;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .woofly-detail-anabul-bottom {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+        padding: 12px 18px;
+    }
+
+    .woofly-detail-anabul-bottom div {
+        width: 100%;
+        justify-content: space-between;
+        gap: 15px;
+    }
+
+    .woofly-detail-box {
+        padding: 15px 15px 20px;
+        border-radius: 20px;
+    }
+
+    .woofly-detail-box-title h2 {
+        font-size: 17px;
+    }
+
+    .woofly-detail-row {
+        grid-template-columns: 1fr;
+        gap: 4px;
+        padding: 10px 10px;
+    }
+
+    .woofly-detail-row strong {
+        text-align: left;
+    }
+
+    .woofly-status-box {
+        padding: 22px 15px;
+        border-radius: 20px;
+    }
+
+    .woofly-status-timeline {
+        margin: 0;
+    }
+
+    .woofly-status-step strong {
+        font-size: 12px;
+    }
+
+    .woofly-status-step small {
+        font-size: 10px;
+    }
+
+    .woofly-status-circle {
+        width: 35px;
+        height: 35px;
+        font-size: 12px;
+    }
+
+    .woofly-status-timeline::before {
+        top: 17px;
+        left: 12%;
+        right: 12%;
+    }
+
+    .woofly-cancel-form button {
+        width: 100%;
+    }
+
+}
+
+/* =========================
+   WOOFLY - PROFILE
+========================= */
+
+.woofly-profile-page {
+    min-height: calc(100vh - 80px);
+    padding: 35px 0 55px;
+    background-color: #faf8f1;
+}
+
+
+/* =========================
+   LEFT SIDE
+========================= */
+
+.woofly-profile-intro {
+    padding-left: 20px;
+}
+
+.woofly-profile-intro h1 {
+    margin: 0 0 10px;
+    color: #111111;
+    font-size: 38px;
+    font-weight: 700;
+}
+
+.woofly-profile-intro p {
+    margin: 0;
+    color: #a65300;
+    font-size: 15px;
+}
+
+
+/* DOG */
+
+.woofly-profile-dog {
+    width: 100%;
+    height: 320px;
+    margin-top: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.woofly-profile-dog img {
+    width: 270px;
+    max-width: 100%;
+    height: 270px;
+    object-fit: contain;
+}
+
+
+/* =========================
+   PROFILE CARD
+========================= */
+
+.woofly-profile-card {
+    width: 100%;
+    padding: 38px 45px;
+    border: 1px solid #eee1c5;
+    border-radius: 32px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 8px rgba(56, 32, 23, 0.12);
+}
+
+
+/* =========================
+   FIELD
+========================= */
+
+.woofly-profile-field {
+    display: grid;
+    grid-template-columns: 190px 1fr;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 18px;
+}
+
+.woofly-profile-field label {
+    color: #8f4d12;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.woofly-profile-field input {
+    width: 100%;
+    min-height: 38px;
+    padding: 8px 12px;
+    border: 1px solid #ddd6dc;
+    border-radius: 6px;
+    outline: none;
+    background-color: #ffffff;
+    color: #382017;
+    font-size: 14px;
+    font-weight: 500;
+    box-shadow: 0 2px 4px rgba(56, 32, 23, 0.12);
+}
+
+.woofly-profile-field input:focus {
+    border-color: #a65300;
+    box-shadow: 0 0 0 2px rgba(166, 83, 0, 0.08);
+}
+
+.woofly-profile-field input::placeholder {
+    color: #aaa;
+    font-weight: 400;
+}
+
+
+/* =========================
+   BUTTON
+========================= */
+
+.woofly-profile-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 20px;
+    margin-top: 26px;
+    padding-right: 0;
+}
+
+.woofly-profile-cancel,
+.woofly-profile-save {
+    width: 180px;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 7px;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+
+/* CANCEL */
+
+.woofly-profile-cancel {
+    border: 1px solid #a98c73;
+    background-color: #ffffff;
+    color: #5d432e;
+}
+
+.woofly-profile-cancel:hover {
+    background-color: #faf5ef;
+    color: #5d432e;
+}
+
+
+/* SAVE */
+
+.woofly-profile-save {
+    border: 1px solid #a65300;
+    background-color: #a65300;
+    color: #ffffff;
+}
+
+.woofly-profile-save:hover {
+    background-color: #8f4700;
+}
+
+
+/* =========================
+   ALERT
+========================= */
+
+.woofly-profile-page .alert {
+    margin-bottom: 20px;
+    border-radius: 10px;
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 991.98px) {
+
+    .woofly-profile-page {
+        padding: 35px 0 60px;
+    }
+
+    .woofly-profile-intro {
+        padding-left: 0;
+        text-align: center;
+    }
+
+    .woofly-profile-dog {
+        height: 220px;
+        margin-top: 10px;
+    }
+
+    .woofly-profile-dog img {
+        width: 210px;
+        height: 210px;
+    }
+
+}
+
+
+@media (max-width: 767.98px) {
+
+    .woofly-profile-card {
+        padding: 28px 22px;
+        border-radius: 22px;
+    }
+
+    .woofly-profile-field {
+        grid-template-columns: 1fr;
+        gap: 7px;
+        margin-bottom: 17px;
+    }
+
+    .woofly-profile-actions {
+        flex-direction: column-reverse;
+        gap: 10px;
+    }
+
+    .woofly-profile-cancel,
+    .woofly-profile-save {
+        width: 100%;
+    }
+
 }

@@ -2,55 +2,95 @@
 
 @section('content')
 
-<div class="container py-5">
+<div class="woofly-profile-page">
 
-    <div class="row justify-content-center">
+    <div class="container">
 
-        <div class="col-md-7 col-lg-6">
+        <div class="row align-items-center g-5">
 
-            <div class="text-center mb-4">
-                <h1 class="fw-bold">Ubah Profil</h1>
-                <p class="text-muted">
-                    Perbarui informasi profil akun kamu.
-                </p>
+            {{-- =========================
+                 BAGIAN KIRI
+            ========================== --}}
+            <div class="col-lg-4">
+
+                <div class="woofly-profile-intro">
+
+                    <h1>
+                        Edit Profil
+                    </h1>
+
+                    <p>
+                        Manage and update your account information
+                    </p>
+
+                    {{-- FOTO ANJING TRANSPARAN --}}
+                    <div class="woofly-profile-dog">
+
+                        <img
+                            src="{{ asset('images/profil.png') }}"
+                            alt="Dog"
+                        >
+
+                    </div>
+
+                </div>
+
             </div>
 
 
-            {{-- Pesan berhasil --}}
-            @if (session('success'))
-                <div class="alert alert-success">
-                    {{ session('success') }}
-                </div>
-            @endif
+            {{-- =========================
+                 BAGIAN KANAN
+            ========================== --}}
+            <div class="col-lg-8">
+
+                {{-- Pesan berhasil --}}
+                @if (session('success'))
+
+                    <div class="alert alert-success">
+                        {{ session('success') }}
+                    </div>
+
+                @endif
 
 
-            {{-- Error --}}
-            @if ($errors->any())
-                <div class="alert alert-danger">
-                    <ul class="mb-0">
-                        @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
-                </div>
-            @endif
+                {{-- Error --}}
+                @if ($errors->any())
+
+                    <div class="alert alert-danger">
+
+                        <ul class="mb-0">
+
+                            @foreach ($errors->all() as $error)
+
+                                <li>
+                                    {{ $error }}
+                                </li>
+
+                            @endforeach
+
+                        </ul>
+
+                    </div>
+
+                @endif
 
 
-            {{-- Form --}}
-            <div class="card border-0 shadow-sm rounded-4">
+                {{-- FORM --}}
+                <div class="woofly-profile-card">
 
-                <div class="card-body p-4 p-md-5">
-
-                    <form action="{{ route('customer.profile.update') }}"
-                          method="POST">
+                    <form
+                        action="{{ route('customer.profile.update') }}"
+                        method="POST"
+                    >
 
                         @csrf
                         @method('PUT')
 
 
-                        {{-- Nama --}}
-                        <div class="mb-3">
-                            <label for="nama" class="form-label fw-semibold">
+                        {{-- NAMA --}}
+                        <div class="woofly-profile-field">
+
+                            <label for="nama">
                                 Nama
                             </label>
 
@@ -58,16 +98,17 @@
                                 type="text"
                                 id="nama"
                                 name="nama"
-                                class="form-control"
                                 value="{{ old('nama', Auth::user()->nama) }}"
                                 required
                             >
+
                         </div>
 
 
-                        {{-- Email --}}
-                        <div class="mb-3">
-                            <label for="email" class="form-label fw-semibold">
+                        {{-- EMAIL --}}
+                        <div class="woofly-profile-field">
+
+                            <label for="email">
                                 Email
                             </label>
 
@@ -75,62 +116,67 @@
                                 type="email"
                                 id="email"
                                 name="email"
-                                class="form-control"
                                 value="{{ old('email', Auth::user()->email) }}"
                                 required
                             >
+
                         </div>
 
 
-                        {{-- Password Baru --}}
-                        <div class="mb-3">
-                            <label for="password" class="form-label fw-semibold">
-                                Password Baru
+                        {{-- PASSWORD --}}
+                        <div class="woofly-profile-field">
+
+                            <label for="password">
+                                Password
                             </label>
 
                             <input
                                 type="password"
                                 id="password"
                                 name="password"
-                                class="form-control"
-                                placeholder="Kosongkan jika tidak ingin mengubah"
+                                placeholder="Kosongkan jika tidak diubah"
                             >
+
                         </div>
 
 
-                        {{-- Konfirmasi Password --}}
-                        <div class="mb-4">
-                            <label for="password_confirmation"
-                                   class="form-label fw-semibold">
-                                Konfirmasi Password Baru
+                        {{-- KONFIRMASI PASSWORD --}}
+                        <div class="woofly-profile-field">
+
+                            <label for="password_confirmation">
+                                Konfirmasi Password
                             </label>
 
                             <input
                                 type="password"
                                 id="password_confirmation"
                                 name="password_confirmation"
-                                class="form-control"
-                                placeholder="Kosongkan jika tidak ingin mengubah"
+                                placeholder="Kosongkan jika tidak diubah"
                             >
+
                         </div>
 
 
-                        {{-- Tombol --}}
-                        <button type="submit"
-                                class="btn woofly-register w-100">
-                            Simpan Perubahan
-                        </button>
+                        {{-- BUTTON --}}
+                        <div class="woofly-profile-actions">
+
+                            <a
+                                href="{{ url('/') }}"
+                                class="woofly-profile-cancel"
+                            >
+                                Cancel
+                            </a>
+
+                            <button
+                                type="submit"
+                                class="woofly-profile-save"
+                            >
+                                Save Changes
+                            </button>
+
+                        </div>
 
                     </form>
-
-
-                    {{-- Kembali --}}
-                    <div class="text-center mt-3">
-                        <a href="{{ url('/') }}"
-                           class="text-decoration-none text-muted">
-                            ← Kembali ke Home
-                        </a>
-                    </div>
 
                 </div>
 

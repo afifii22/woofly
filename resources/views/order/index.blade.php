@@ -2,137 +2,179 @@
 
 @section('content')
 
-<div class="container py-5">
+<div class="woofly-my-order-page">
 
-    {{-- Judul --}}
-    <div class="text-center mb-5">
-        <h1 class="fw-bold">Pesanan Saya</h1>
-        <p class="text-muted">
-            Lihat dan pantau pesanan anabul kamu.
-        </p>
-    </div>
+    <div class="container-fluid px-4 px-lg-5">
 
+        {{-- Judul --}}
+        <div class="woofly-my-order-header">
 
-    {{-- Pesan berhasil --}}
-    @if (session('success'))
-        <div class="alert alert-success">
-            {{ session('success') }}
-        </div>
-    @endif
+            <h1>
+                Pesanan Saya
+            </h1>
 
-
-    @if ($orders->isEmpty())
-
-        {{-- Belum ada pesanan --}}
-        <div class="text-center py-5">
-
-            <div class="fs-1 mb-3">
-                🐶
-            </div>
-
-            <h4 class="fw-bold">
-                Belum ada pesanan
-            </h4>
-
-            <p class="text-muted">
-                Kamu belum memiliki pesanan anabul.
+            <p>
+                Lihat dan pantau pesanan anabul kamu.
             </p>
 
-            <a href="{{ route('anabul.index') }}"
-               class="btn woofly-register mt-2">
-                Lihat Katalog
-            </a>
-
         </div>
 
-    @else
 
-        {{-- Daftar Pesanan --}}
-        <div class="row g-4">
+        {{-- Pesan berhasil --}}
+        @if (session('success'))
 
-            @foreach ($orders as $order)
+            <div class="alert alert-success mb-4">
+                {{ session('success') }}
+            </div>
 
-                <div class="col-md-6 col-lg-4">
+        @endif
 
-                    <div class="card h-100 border-0 shadow-sm rounded-4">
 
-                        <div class="card-body p-4">
+        @if ($orders->isEmpty())
 
-                            <h4 class="fw-bold mb-3">
+            {{-- Belum ada pesanan --}}
+            <div class="woofly-order-empty">
+
+                <div class="woofly-empty-icon">
+                    🐶
+                </div>
+
+                <h4>
+                    Belum ada pesanan
+                </h4>
+
+                <p>
+                    Kamu belum memiliki pesanan anabul.
+                </p>
+
+                <a
+                    href="{{ route('anabul.index') }}"
+                    class="woofly-empty-button"
+                >
+                    Lihat Katalog
+                </a>
+
+            </div>
+
+        @else
+
+            {{-- Daftar Pesanan --}}
+            <div class="woofly-order-list">
+
+                @foreach ($orders as $order)
+
+                    @php
+
+                        $statusClass = match ($order->status_pesanan) {
+
+                            'Menunggu Konfirmasi' => 'waiting',
+
+                            'Dikonfirmasi' => 'confirmed',
+
+                            'Selesai' => 'completed',
+
+                            'Dibatalkan' => 'cancelled',
+
+                            'Ditolak' => 'rejected',
+
+                            default => 'default',
+
+                        };
+
+                    @endphp
+
+
+                    <div class="woofly-my-order-card">
+
+                        {{-- FOTO ANABUL --}}
+                        <div class="woofly-my-order-image">
+
+                            @if ($order->anabul && $order->anabul->foto)
+
+                                <img
+                                    src="{{ asset('images/' . $order->anabul->foto) }}"
+                                    alt="{{ $order->anabul->nama }}"
+                                >
+
+                            @else
+
+                                <div class="woofly-order-no-image">
+                                    No Image
+                                </div>
+
+                            @endif
+
+                        </div>
+
+
+                        {{-- INFORMASI PESANAN --}}
+                        <div class="woofly-my-order-info">
+
+                            <h2>
+                                #WF{{ str_pad($order->id, 8, '0', STR_PAD_LEFT) }}
+                            </h2>
+
+                            <h3>
                                 {{ $order->anabul->nama }}
-                            </h4>
+                            </h3>
+
+                            <p class="woofly-my-order-breed">
+                                {{ $order->anabul->ras }}
+                            </p>
 
 
-                            <p class="mb-2">
-                                <span class="text-muted">
-                                    Harga
+                            <div class="woofly-my-order-meta">
+
+                                <span>
+                                    {{ $order->created_at->format('d M Y') }}
                                 </span>
-                                <br>
+
                                 <strong>
                                     Rp {{ number_format($order->anabul->harga, 0, ',', '.') }}
                                 </strong>
-                            </p>
+
+                            </div>
+
+                        </div>
 
 
-                            <p class="mb-2">
-                                <span class="text-muted">
-                                    Metode Pembelian
-                                </span>
-                                <br>
-                                <strong>
-                                    {{ $order->metode_pembelian }}
-                                </strong>
-                            </p>
+                        {{-- STATUS + DETAIL --}}
+                        <div class="woofly-my-order-right">
+
+                            <span class="woofly-order-status {{ $statusClass }}">
+                                {{ $order->status_pesanan }}
+                            </span>
 
 
-                            <p class="mb-2">
-                                <span class="text-muted">
-                                    Metode Pembayaran
-                                </span>
-                                <br>
-                                <strong>
-                                    {{ $order->metode_pembayaran }}
-                                </strong>
-                            </p>
-
-
-                            <p class="mb-4">
-                                <span class="text-muted">
-                                    Status
-                                </span>
-                                <br>
-
-                                <span class="badge bg-secondary">
-                                    {{ $order->status_pesanan }}
-                                </span>
-                            </p>
-
-
-                            <a href="{{ route('order.show', $order->id) }}"
-                               class="btn woofly-register w-100">
-                                Lihat Detail
+                            <a
+                                href="{{ route('order.show', $order->id) }}"
+                                class="woofly-order-detail-link"
+                            >
+                                Detail Pesanan ->
                             </a>
 
                         </div>
 
                     </div>
 
-                </div>
+                @endforeach
 
-            @endforeach
+            </div>
+
+        @endif
+
+
+        {{-- Kembali ke katalog --}}
+        <div class="text-center mt-5">
+
+            <a
+                href="{{ route('anabul.index') }}"
+                class="text-decoration-none text-muted"
+            >
+                ← Kembali ke Katalog
+            </a>
 
         </div>
-
-    @endif
-
-
-    {{-- Kembali ke katalog --}}
-    <div class="text-center mt-5">
-
-        <a href="{{ route('anabul.index') }}"
-           class="text-decoration-none text-muted">
-            ← Kembali ke Katalog
-        </a>
 
     </div>
 
