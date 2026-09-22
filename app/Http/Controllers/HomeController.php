@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\Anabul;
 
 use Illuminate\Http\Request;
 
@@ -21,8 +22,13 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
+
+   
     public function index()
     {
-        return view('home');
+        $anabuls = Anabul::latest()->get();
+
+        return view('home', compact('anabuls'));
     }
+
 }

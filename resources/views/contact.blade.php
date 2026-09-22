@@ -2,53 +2,84 @@
 
 @section('content')
 
-<div class="container py-5">
+<div class="woofly-contact-page">
 
-    <div class="text-center mb-5">
-        <h1 class="fw-bold">Contact WOOFLY</h1>
-        <p class="text-muted">
-            Hubungi kami untuk informasi lebih lanjut mengenai anabul dan pemesanan.
+    {{-- HEADER --}}
+    <div class="woofly-contact-header">
+        <h1>Get in Touch</h1>
+
+        <p>
+            We'd love to hear from you! Feel free to reach out to WOOFLY<br>
+            through the contact information below.
         </p>
     </div>
 
-    <div class="row justify-content-center g-4">
 
-        <div class="col-md-4">
-            <div class="card border-0 shadow-sm h-100 text-center p-4">
-                <div class="fs-1 mb-3">📞</div>
+    {{-- CONTACT CARDS --}}
+    <div class="container">
+        <div class="row g-3 g-lg-4 justify-content-center">
 
-                <h5 class="fw-bold">WhatsApp</h5>
+            {{-- PHONE --}}
+            <div class="col-md-4">
+                <div class="woofly-contact-card">
 
-                <p class="text-muted mb-0">
-                    08xxxxxxxxxx
-                </p>
+                    <div class="woofly-contact-icon">
+                        <i class="fa-solid fa-phone"></i>
+                    </div>
+
+                    <div class="woofly-contact-info">
+                        <h5>Phone Number</h5>
+
+                        <p>
+                            085290234420
+                        </p>
+                    </div>
+
+                </div>
             </div>
-        </div>
 
-        <div class="col-md-4">
-            <div class="card border-0 shadow-sm h-100 text-center p-4">
-                <div class="fs-1 mb-3">📧</div>
 
-                <h5 class="fw-bold">Email</h5>
+            {{-- EMAIL --}}
+            <div class="col-md-4">
+                <div class="woofly-contact-card">
 
-                <p class="text-muted mb-0">
-                    woofly@gmail.com
-                </p>
+                    <div class="woofly-contact-icon">
+                        <i class="fa-regular fa-envelope"></i>
+                    </div>
+
+                    <div class="woofly-contact-info">
+                        <h5>Email Address</h5>
+
+                        <p>
+                            woofly@gmail.com
+                        </p>
+                    </div>
+
+                </div>
             </div>
-        </div>
 
-        <div class="col-md-4">
-            <div class="card border-0 shadow-sm h-100 text-center p-4">
-                <div class="fs-1 mb-3">📍</div>
 
-                <h5 class="fw-bold">Alamat</h5>
+            {{-- ADDRESS --}}
+            <div class="col-md-4">
+                <div class="woofly-contact-card">
 
-                <p class="text-muted mb-0">
-                    Purbalingga, Jawa Tengah
-                </p>
+                    <div class="woofly-contact-icon">
+                        <i class="fa-solid fa-location-dot"></i>
+                    </div>
+
+                    <div class="woofly-contact-info">
+                        <h5>Store Address</h5>
+
+                        <p>
+                            Jl. Treasure No. 10, Limbasari,<br>
+                            Bobotsari, Purbalingga, Jawa Tengah
+                        </p>
+                    </div>
+
+                </div>
             </div>
-        </div>
 
+        </div>
     </div>
 
 </div>

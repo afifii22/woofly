@@ -1,134 +1,316 @@
 @import "@fortawesome/fontawesome-free/css/all.css";
 @import "../../node_modules/bootstrap/scss/bootstrap";
 
-/* =========================
-   WOOFLY NAVBAR
-========================= */
+/* ============================================================
+   NAVBAR
+============================================================ */
 
-.woofly-navbar {
-    background-color: #f8f3ed;
-    min-height: 80px;
-    border-bottom: 1px solid #eee4da;
+.woofly-nav {
+    height: 64px;
+    background: rgba(255, 253, 247, 0.97);
+    border-bottom: 1px solid var(--line);
+    position: sticky;
+    top: 0;
+    z-index: 100;
 }
 
-.woofly-navbar .container {
-    max-width: 100%;
-    padding-left: 30px;
-    padding-right: 30px;
+
+/* ============================================================
+   NAVBAR INNER
+============================================================ */
+
+.woofly-nav-inner {
+    width: 100%;
+    padding: 0 24px;
 }
 
-.woofly-logo {
+
+/* ============================================================
+   BRAND
+============================================================ */
+
+.woofly-nav .navbar-brand {
     display: flex;
     align-items: center;
     gap: 10px;
-    color: #382017;
-    font-family: Georgia, serif;
-    font-size: 22px;
-    font-weight: 700;
     margin-right: auto;
+    font-family: var(--font-serif);
+    font-weight: 700;
+    font-size: 16px;
+    letter-spacing: 0.03em;
+    color: var(--ink);
 }
 
-.logo-circle {
-    width: 34px;
-    height: 34px;
+.woofly-nav .brand-mark {
+    width: 28px;
+    height: 28px;
     border-radius: 50%;
-    background-color: #a8755c;
-    color: white;
+    background: var(--brown);
+    color: #fff;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-sans);
+    font-weight: 700;
+    font-size: 13px;
+    flex-shrink: 0;
+}
+
+
+/* ============================================================
+   COLLAPSE
+============================================================ */
+
+.woofly-nav .navbar-collapse {
+    flex-grow: 1;
+}
+
+
+/* ============================================================
+   MENU
+============================================================ */
+
+.woofly-nav .woofly-menu {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.woofly-nav .nav-link {
+    color: #8b5a2b;
+    font-size: 13px;
+    font-weight: 500;
+    padding: 0.25rem 0.5rem;
+    transition: color 0.2s ease;
+}
+
+.woofly-nav .nav-link:hover,
+.woofly-nav .nav-link.active {
+    color: var(--brown);
+}
+
+
+/* ============================================================
+   BAGIAN KANAN
+============================================================ */
+
+.woofly-nav .woofly-right {
+    margin-left: auto;
+}
+
+
+/* ============================================================
+   SEARCH
+============================================================ */
+
+.woofly-search-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.woofly-nav .nav-search-btn {
+    width: 32px;
+    height: 32px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-family: Arial, sans-serif;
-    font-size: 15px;
-    font-weight: 600;
-}
-
-.woofly-menu {
-    gap: 12px;
-}
-
-.woofly-menu .nav-link {
-    color: #382017;
-    font-size: 15px;
-    padding: 8px 18px !important;
-}
-
-.woofly-menu .nav-link:hover,
-.woofly-menu .nav-link.active {
-    color: #a8755c;
-}
-
-.woofly-right {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-}
-
-.woofly-search {
-    color: #8f6958;
-    font-size: 25px;
-    line-height: 1;
-}
-
-.woofly-search:hover {
-    color: #382017;
-}
-
-.nav-divider {
-    width: 1px;
-    height: 25px;
-    background-color: #ddd1c6;
-}
-
-.woofly-login {
-    color: #8f6958;
-    font-size: 15px;
-}
-
-.woofly-login:hover {
-    color: #382017;
-}
-
-.woofly-register {
-    background-color: #a8755c;
-    color: white;
-    padding: 10px 22px;
-    border-radius: 30px;
-    font-size: 14px;
-    font-weight: 600;
-}
-
-.woofly-register:hover {
-    background-color: #8f604c;
-    color: white;
-}
-
-.woofly-account {
+    padding: 0;
     border: none;
     background: transparent;
-    color: #382017;
-    font-size: 14px;
+    color: var(--brown);
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.woofly-nav .nav-search-btn:hover {
+    color: var(--deep-brown);
+}
+
+
+/* ============================================================
+   SEARCH FORM
+============================================================ */
+
+.woofly-search-form {
+    position: absolute;
+    top: 42px;
+    right: 0;
+    width: 250px;
+    display: none;
+    align-items: center;
+    padding: 5px;
+    background: #fffdf7;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    box-shadow: 0 8px 25px rgba(56, 32, 23, 0.12);
+}
+
+.woofly-search-form.active {
+    display: flex;
+}
+
+.woofly-search-form input {
+    width: 100%;
+    padding: 8px 10px;
+    border: none;
+    outline: none;
+    background: transparent;
+    color: var(--ink);
+    font-size: 13px;
+}
+
+.woofly-search-form input::placeholder {
+    color: #a99c94;
+}
+
+.woofly-search-form button {
+    width: 32px;
+    height: 32px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    border-radius: 6px;
+    background: var(--brown);
+    color: #fff;
+    cursor: pointer;
+}
+
+
+/* ============================================================
+   LOGIN
+============================================================ */
+
+.woofly-nav .nav-login {
+    color: #8b5a2b;
+    font-size: 13px;
+    font-weight: 500;
+    transition: color 0.2s ease;
+}
+
+.woofly-nav .nav-login:hover {
+    color: var(--brown);
+}
+
+
+/* ============================================================
+   REGISTER
+============================================================ */
+
+.woofly-nav .btn-register {
+    padding: 7px 18px;
+    border: 1px solid var(--brown);
+    border-radius: 24px;
+    background: var(--brown);
+    color: #fff;
+    font-size: 13px;
+    font-weight: 700;
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease;
+}
+
+.woofly-nav .btn-register:hover {
+    background: var(--deep-brown);
+    color: #fff;
+
+    transform: translateY(-1px);
+}
+
+
+/* ============================================================
+   ACCOUNT
+============================================================ */
+
+.woofly-account {
+    padding: 6px 0;
+    border: none;
+    background: transparent;
+    color: #8b5a2b;
+    font-size: 13px;
+    font-weight: 500;
 }
 
 .woofly-account:hover,
 .woofly-account:focus {
-    color: #a8755c;
     background: transparent;
+    color: var(--brown);
 }
 
-/* Mobile */
-@media (max-width: 991.98px) {
-    .woofly-menu {
-        margin-top: 15px;
-        gap: 0;
-    }
 
-    .woofly-right {
-        margin-top: 15px;
-        padding-bottom: 15px;
-        flex-wrap: wrap;
-    }
+/* ============================================================
+   DROPDOWN
+============================================================ */
+
+.woofly-nav .dropdown-menu {
+    min-width: 180px;
+    margin-top: 10px;
+    padding: 8px;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    background: #fffdf7;
+    box-shadow: 0 10px 30px rgba(56, 32, 23, 0.12);
 }
 
+.woofly-nav .dropdown-item {
+    padding: 9px 11px;
+    border-radius: 6px;
+    color: var(--ink);
+    font-size: 13px;
+}
+
+.woofly-nav .dropdown-item:hover {
+    background: #f8f3ed;
+    color: var(--brown);
+}
+
+
+/* ============================================================
+   MOBILE
+============================================================ */
+
+@media (max-width: 767.98px) {
+
+    .woofly-nav {
+        height: auto;
+        min-height: 64px;
+    }
+
+    .woofly-nav-inner {
+        padding: 0 18px;
+    }
+
+    .woofly-nav .navbar-collapse {
+        padding: 15px 0;
+    }
+
+    .woofly-nav .woofly-menu {
+        position: static;
+        transform: none;
+        margin: 0 0 15px 0;
+        display: block !important;
+    }
+
+    .woofly-nav .nav-item {
+        width: 100%;
+    }
+
+    .woofly-nav .nav-link {
+        padding: 9px 0;
+    }
+
+    .woofly-nav .woofly-right {
+        margin-left: 0;
+    }
+
+    .woofly-search-form {
+        right: auto;
+        left: 0;
+    }
+
+}
 /* =========================
    WOOFLY SEARCH
 ========================= */
@@ -138,23 +320,19 @@
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    margin-bottom: 8px;
+    margin-bottom: 2px;
 }
 
 .woofly-search-toggle {
     width: 38px;
     height: 38px;
-
     display: flex;
     align-items: center;
     justify-content: center;
-
     border: none;
     background-color: transparent;
-
     color: #8f6958;
     font-size: 18px;
-
     cursor: pointer;
 }
 
@@ -166,20 +344,14 @@
     position: absolute;
     right: 0;
     top: 45px;
-
     width: 260px;
-
     display: none;
     align-items: center;
-
     padding: 5px;
-
     background-color: #ffffff;
     border: 1px solid #eee4da;
     border-radius: 10px;
-
     box-shadow: 0 8px 25px rgba(56, 32, 23, 0.12);
-
     z-index: 1000;
 }
 
@@ -189,14 +361,10 @@
 
 .woofly-search-form input {
     width: 100%;
-
     border: none;
     outline: none;
-
     padding: 8px 10px;
-
     background-color: transparent;
-
     color: #382017;
     font-size: 12px;
 }
@@ -208,15 +376,11 @@
 .woofly-search-form button {
     width: 32px;
     height: 32px;
-
     flex-shrink: 0;
-
     border: none;
     border-radius: 7px;
-
     background-color: #c9905b;
     color: white;
-
     cursor: pointer;
 }
 
@@ -244,11 +408,12 @@
 ========================= */
 
 .woofly-footer {
-    position: relative;
-    margin-top: 60px;
-    padding: 55px 0 25px;
-    background-color: #382017;
-    color: #ffffff;
+    position: relative; 
+    margin-top: 60px; 
+    padding: 25px 0 12px; 
+    background-color: #382017; 
+    color: #ffffff; 
+
 }
 
 .woofly-footer .container {
@@ -276,16 +441,12 @@
 .woofly-footer-brand .logo-circle {
     width: 34px;
     height: 34px;
-
     display: flex;
     align-items: center;
     justify-content: center;
-
     border-radius: 50%;
-
     background-color: #c9905b;
     color: #ffffff !important;
-
     font-family: Arial, sans-serif;
     font-size: 15px;
     font-weight: 600;
@@ -298,9 +459,7 @@
 
 .woofly-footer-desc {
     max-width: 380px;
-
     margin-bottom: 22px;
-
     color: rgba(255, 255, 255, 0.65) !important;
     font-size: 13px;
     line-height: 1.8;
@@ -411,10 +570,8 @@
 ========================= */
 
 .woofly-footer-line {
-    height: 1px;
-
-    margin: 35px 0 22px;
-
+    height: 1px; 
+    margin: 25px 0 15px; 
     background-color: rgba(255, 255, 255, 0.12);
 }
 
@@ -3073,4 +3230,648 @@
         width: 100%;
     }
 
+}
+
+/* =========================
+   WOOFLY CONTACT PAGE
+========================= */
+
+.woofly-contact-page {
+    min-height: 390px;
+    padding: 55px 0 90px;
+    background-color: #faf8f0;
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+.woofly-contact-header {
+    margin-bottom: 62px;
+    text-align: center;
+}
+
+.woofly-contact-header h1 {
+    margin-bottom: 4px;
+
+    color: #000000;
+
+    font-family: Georgia, serif;
+    font-size: 34px;
+    font-weight: 700;
+}
+
+.woofly-contact-header p {
+    margin: 0;
+
+    color: #9a570f;
+
+    font-size: 14px;
+    line-height: 1.15;
+}
+
+
+/* =========================
+   CONTACT CARD
+========================= */
+
+.woofly-contact-card {
+    min-height: 94px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 25px;
+
+    padding: 18px 30px;
+
+    background-color: #ffffff;
+
+    border: 1px solid #f0dfbf;
+    border-radius: 22px;
+
+    box-shadow: 0 3px 3px rgba(0, 0, 0, 0.15);
+}
+
+
+/* =========================
+   ICON
+========================= */
+
+.woofly-contact-icon {
+    flex: 0 0 52px;
+
+    width: 52px;
+    height: 52px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background-color: #ffd0d4;
+
+    color: #000000;
+
+    font-size: 25px;
+}
+
+
+/* =========================
+   INFO
+========================= */
+
+.woofly-contact-info {
+    min-width: 0;
+}
+
+.woofly-contact-info h5 {
+    margin: 0 0 6px;
+
+    color: #7c4005;
+
+    font-family: Georgia, serif;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.woofly-contact-info p {
+    margin: 0;
+
+    color: #98540d;
+
+    font-size: 13px;
+    line-height: 1.35;
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 991.98px) {
+
+    .woofly-contact-page {
+        padding: 50px 20px 70px;
+    }
+
+    .woofly-contact-header {
+        margin-bottom: 45px;
+    }
+
+    .woofly-contact-card {
+        padding: 18px 22px;
+        gap: 18px;
+    }
+
+}
+
+
+@media (max-width: 767.98px) {
+
+    .woofly-contact-header h1 {
+        font-size: 30px;
+    }
+
+    .woofly-contact-header p {
+        font-size: 13px;
+    }
+
+    .woofly-contact-header p br {
+        display: none;
+    }
+
+    .woofly-contact-card {
+        min-height: 90px;
+    }
+
+}
+
+// ============================================================
+// CSS CUSTOM VARIABLES
+// ============================================================
+:root {
+  --cream:      #f8f5eb;
+  --paper:      #fffdf7;
+  --ink:        #17130e;
+  --brown:      #a95100;
+  --deep-brown: #6b3300;
+  --line:       #d8d0c0;
+  --muted:      #756c5d;
+  --font-serif: 'Playfair Display', Georgia, 'Times New Roman', serif;
+  --font-sans:  'DM Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+}
+
+// ============================================================
+// BASE
+// ============================================================
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-sans);
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+// ============================================================
+// HERO SECTION
+// ============================================================
+.hero-section {
+  background: var(--cream);
+  border-bottom: 1px solid #eee5cf;
+  padding: 70px 0;
+
+  .hero-eyebrow {
+    font-family: var(--font-serif);
+    font-weight: 700;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--brown);
+    margin-bottom: 12px;
+  }
+
+  .hero-title {
+    font-family: var(--font-serif);
+    font-weight: 800;
+    font-size: clamp(36px, 4.5vw, 56px);
+    line-height: 1.07;
+    letter-spacing: -0.02em;
+    margin-bottom: 0;
+    color: var(--ink);
+
+    em {
+      color: var(--brown);
+      font-style: normal;
+    }
+  }
+
+  .hero-desc {
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--muted);
+    max-width: 400px;
+    margin-top: 18px;
+    margin-bottom: 28px;
+  }
+
+  .btn-primary-woofly {
+    background: var(--brown);
+    color: #fff;
+    border: 1px solid var(--brown);
+    border-radius: 24px;
+    padding: 11px 26px;
+    font-size: 13px;
+    font-weight: 700;
+    display: inline-block;
+    transition: background 0.2s ease, transform 0.2s ease;
+
+    &:hover {
+      background: var(--deep-brown);
+      color: #fff;
+      transform: translateY(-2px);
+    }
+  }
+
+  .btn-outline-woofly {
+    background: transparent;
+    color: var(--brown);
+    border: 1px solid var(--brown);
+    border-radius: 24px;
+    padding: 11px 26px;
+    font-size: 13px;
+    font-weight: 700;
+    display: inline-block;
+    transition: background 0.2s ease, color 0.2s ease;
+
+    &:hover {
+      background: var(--brown);
+      color: #fff;
+    }
+  }
+
+  .hero-image-wrap {
+    position: relative;
+    border: 1.5px solid #25211c;
+    border-radius: 22px;
+    overflow: hidden;
+    background: #ead5bc;
+    height: 320px;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .image-badge {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      background: var(--paper);
+      border-radius: 14px 14px 0 0;
+      padding: 10px 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 10px;
+      color: #5e5548;
+      line-height: 1.4;
+
+      strong {
+        display: block;
+        color: var(--ink);
+        font-size: 11px;
+      }
+    }
+  }
+}
+
+// ============================================================
+// ABOUT SECTION
+// ============================================================
+.about-section {
+  padding: 80px 0;
+  background: var(--paper);
+
+  .about-image-wrap {
+    border: 1.5px solid #25211c;
+    border-radius: 22px;
+    overflow: hidden;
+    background: #ead5bc;
+    height: 320px;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+  }
+
+  .about-eyebrow {
+    font-family: var(--font-serif);
+    font-weight: 700;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--brown);
+    margin-bottom: 12px;
+  }
+
+  .about-title {
+    font-family: var(--font-serif);
+    font-weight: 800;
+    font-size: clamp(28px, 3.5vw, 44px);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    margin-bottom: 20px;
+
+    em {
+      color: var(--brown);
+      font-style: normal;
+    }
+  }
+
+  .about-text {
+    font-size: 13px;
+    line-height: 1.65;
+    color: var(--muted);
+    margin-bottom: 14px;
+  }
+
+  .benefit-item {
+    background: var(--cream);
+    border: 1px solid #eee8dc;
+    border-radius: 10px;
+    padding: 10px 14px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 10px;
+
+    .benefit-icon {
+      width: 26px;
+      height: 26px;
+      border-radius: 8px;
+      background: #fff1b4;
+      flex-shrink: 0;
+    }
+
+    .benefit-label {
+      strong {
+        display: block;
+        font-size: 12px;
+        color: var(--ink);
+        font-weight: 700;
+      }
+
+      small {
+        display: block;
+        font-size: 11px;
+        color: var(--muted);
+        margin-top: 2px;
+      }
+    }
+  }
+}
+
+// ============================================================
+// GALLERY SECTION
+// ============================================================
+.gallery-section {
+  background: #f0eadc;
+  padding: 75px 0 80px;
+
+  .section-title em {
+    color: var(--brown);
+    font-style: normal;
+  }
+
+  .gallery-card {
+    background: var(--paper);
+    border: 1px solid #d9d0c0;
+    border-radius: 6px;
+    overflow: hidden;
+    transition: box-shadow 0.25s ease;
+
+    &:hover {
+      box-shadow: 0 6px 24px rgba(0, 0, 0, 0.10);
+
+      .gallery-card-placeholder {
+        opacity: 0.85;
+      }
+    }
+
+    .gallery-card-img {
+      height: 200px;
+      position: relative;
+      overflow: hidden;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        transition: transform 0.3s ease;
+      }
+
+      &:hover img {
+        transform: scale(1.05);
+      }
+    }
+
+    .gallery-card-placeholder {
+      display: block;
+      width: 100%;
+      height: 100%;
+      background: repeating-linear-gradient(
+        45deg,
+        #e8d5b8,
+        #e8d5b8 7px,
+        #d4bc9a 7px,
+        #d4bc9a 14px
+      );
+      transition: opacity 0.25s ease;
+    }
+
+    .gallery-num {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: var(--paper);
+      color: var(--brown);
+      font-weight: 700;
+      font-size: 11px;
+      padding: 4px 8px;
+      border-radius: 4px;
+      font-family: var(--font-serif);
+    }
+
+    .gallery-card-body {
+      display: none;
+    }
+
+    .gallery-dog-name,
+    .gallery-dog-breed,
+    .gallery-dog-link {
+      display: none;
+    }
+  }
+}
+
+// ============================================================
+// FEATURED DOGS / CATALOG SECTION
+// ============================================================
+.catalog-section {
+  background: var(--cream);
+  padding: 75px 0 85px;
+
+  .section-eyebrow {
+    font-family: var(--font-serif);
+    font-weight: 700;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--brown);
+    margin-bottom: 10px;
+  }
+
+  .section-title {
+    font-family: var(--font-serif);
+    font-weight: 800;
+    font-size: clamp(28px, 3.5vw, 44px);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    margin-bottom: 12px;
+  }
+
+  .section-sub {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.6;
+    max-width: 340px;
+    margin: 0 auto;
+  }
+
+  // Dog Card
+  .dog-card {
+    background: #fff;
+    border: 1px solid #d7d1c5;
+    border-radius: 6px;
+    overflow: hidden;
+
+    .dog-card-img {
+      width: 100%;
+      height: 210px;
+      object-fit: cover;
+      display: block;
+      background: #ead5bc;
+    }
+
+    // placeholder ketika tidak ada gambar
+    .dog-card-img-placeholder {
+      width: 100%;
+      height: 210px;
+      background: repeating-linear-gradient(
+        45deg,
+        #e8d5b8,
+        #e8d5b8 6px,
+        #d4bc9a 6px,
+        #d4bc9a 12px
+      );
+      display: block;
+    }
+
+    .dog-card-body {
+      padding: 13px 15px 15px;
+    }
+
+    .dog-card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 3px;
+
+      .dog-name {
+        font-family: var(--font-serif);
+        font-weight: 700;
+        font-size: 16px;
+        color: var(--ink);
+        margin: 0;
+      }
+
+      .dog-price {
+        font-family: var(--font-serif);
+        font-weight: 700;
+        font-size: 12px;
+        color: var(--brown);
+        white-space: nowrap;
+      }
+    }
+
+    .dog-breed {
+      font-size: 12px;
+      color: var(--muted);
+      margin: 0 0 12px;
+    }
+
+    .dog-specs {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 5px;
+      margin-bottom: 14px;
+
+      .spec-item {
+        background: var(--cream);
+        text-align: center;
+        padding: 8px 4px;
+        border-radius: 4px;
+
+        .spec-label {
+          display: block;
+          font-size: 10px;
+          color: var(--muted);
+          margin-bottom: 3px;
+        }
+
+        .spec-value {
+          display: block;
+          font-size: 11px;
+          font-weight: 700;
+          color: var(--ink);
+        }
+      }
+    }
+
+    .btn-detail {
+      display: block;
+      width: 100%;
+      background: var(--brown);
+      color: #fff;
+      border: 1px solid var(--brown);
+      border-radius: 24px;
+      padding: 9px;
+      text-align: center;
+      font-size: 13px;
+      font-weight: 700;
+      transition: background 0.2s ease;
+
+      &:hover {
+        background: var(--deep-brown);
+        color: #fff;
+      }
+    }
+  }
+
+  // Tombol View Full Catalog
+  .btn-catalog-outline {
+    background: transparent;
+    color: var(--brown);
+    border: 1px solid var(--brown);
+    border-radius: 24px;
+    padding: 9px 24px;
+    font-size: 13px;
+    font-weight: 700;
+    display: inline-block;
+    transition: background 0.2s ease, color 0.2s ease;
+
+    &:hover {
+      background: var(--brown);
+      color: #fff;
+    }
+  }
 }

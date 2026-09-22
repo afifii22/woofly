@@ -5,11 +5,10 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AnabulController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\HomeController;
 
 
-Route::get('/', function () {
-    return view ('home');
-});
+Route::get('/', [HomeController::class, 'index'])->name('home');
 
 // Authentication routes
 Route::get('/login', function () {return view('auth.login');})->name('login');
