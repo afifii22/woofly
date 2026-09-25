@@ -1,65 +1,211 @@
 <!DOCTYPE html>
-<html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+
 <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Tambah Anabul - WOOFLY</title>
+    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>
-<body>
 
-    <h1>Tambah Anabul</h1>
+<body class="owner-page">
 
-    <form action="{{ route('anabul.store') }}" method="POST">
-        @csrf
+    <div class="owner-layout">
 
-        <label>Nama</label><br>
-        <input type="text" name="nama" value="{{ old('nama') }}" required>
-        <br><br>
+        @include('layouts.sidebar')
 
-        <label>Ras</label><br>
-        <input type="text" name="ras" value="{{ old('ras') }}" required>
-        <br><br>
+        <div class="owner-main">
 
-        <label>Jenis Kelamin</label><br>
-        <select name="jenis_kelamin" required>
-            <option value="">-- Pilih --</option>
-            <option value="Jantan">Jantan</option>
-            <option value="Betina">Betina</option>
-        </select>
-        <br><br>
+            @section('owner-page-title', 'Tambah Anabul')
+            @include('layouts.owner-navbar')
 
-        <label>Umur (bulan)</label><br>
-        <input type="number" name="umur" value="{{ old('umur') }}" min="0" required>
-        <br><br>
+            <section class="owner-dashboard">
 
-        <label>Warna</label><br>
-        <input type="text" name="warna" value="{{ old('warna') }}" required>
-        <br><br>
+                <div class="owner-form-wrapper">
 
-        <label>Harga</label><br>
-        <input type="number" name="harga" value="{{ old('harga') }}" min="0" required>
-        <br><br>
+                    {{-- CARD FORM --}}
+                    <div class="owner-form-card">
 
-        <label>Foto</label><br>
-        <input type="text" name="foto" value="{{ old('foto') }}" placeholder="contoh: anabul/milo.jpg" required>
-        <br><br>
+                        <div class="owner-form-card-header">
+                            <span class="owner-form-icon">
+                                <i class="fa-solid fa-paw"></i>
+                            </span>
+                            <div>
+                                <p class="owner-panel-label">Manajemen Anabul</p>
+                                <h2 class="owner-form-title">Tambah Anabul Baru</h2>
+                            </div>
+                        </div>
 
-        <label>Kondisi</label><br>
-        <textarea name="kondisi" required>{{ old('kondisi') }}</textarea>
-        <br><br>
+                        @if ($errors->any())
+                            <div class="owner-alert-error">
+                                <i class="fa-solid fa-circle-exclamation"></i>
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
 
-        <label>Status Ketersediaan</label><br>
-        <select name="status_ketersediaan" required>
-            <option value="">-- Pilih --</option>
-            <option value="Tersedia">Tersedia</option>
-            <option value="Tidak Tersedia">Tidak Tersedia</option>
-        </select>
-        <br><br>
+                        <form action="{{ route('anabul.store') }}" method="POST" class="owner-form">
+                            @csrf
 
-        <button type="submit">Simpan</button>
-    </form>
+                            {{-- ROW 1: Nama + Ras --}}
+                            <div class="owner-form-row">
+                                <div class="owner-form-group">
+                                    <label for="nama">Nama Anabul</label>
+                                    <input
+                                        type="text"
+                                        id="nama"
+                                        name="nama"
+                                        value="{{ old('nama') }}"
+                                        placeholder="cth: Max"
+                                        class="owner-form-control {{ $errors->has('nama') ? 'is-invalid' : '' }}"
+                                        required
+                                    >
+                                </div>
 
-    <br>
+                                <div class="owner-form-group">
+                                    <label for="ras">Ras</label>
+                                    <input
+                                        type="text"
+                                        id="ras"
+                                        name="ras"
+                                        value="{{ old('ras') }}"
+                                        placeholder="cth: Husky"
+                                        class="owner-form-control {{ $errors->has('ras') ? 'is-invalid' : '' }}"
+                                        required
+                                    >
+                                </div>
+                            </div>
 
-    <a href="{{ route('owner.dashboard') }}">Kembali ke Dashboard</a>
+                            {{-- ROW 2: Jenis Kelamin + Umur --}}
+                            <div class="owner-form-row">
+                                <div class="owner-form-group">
+                                    <label for="jenis_kelamin">Jenis Kelamin</label>
+                                    <select
+                                        id="jenis_kelamin"
+                                        name="jenis_kelamin"
+                                        class="owner-form-control {{ $errors->has('jenis_kelamin') ? 'is-invalid' : '' }}"
+                                        required
+                                    >
+                                        <option value="">-- Pilih --</option>
+                                        <option value="Jantan" {{ old('jenis_kelamin') === 'Jantan' ? 'selected' : '' }}>Jantan</option>
+                                        <option value="Betina" {{ old('jenis_kelamin') === 'Betina' ? 'selected' : '' }}>Betina</option>
+                                    </select>
+                                </div>
+
+                                <div class="owner-form-group">
+                                    <label for="umur">Umur (bulan)</label>
+                                    <input
+                                        type="number"
+                                        id="umur"
+                                        name="umur"
+                                        value="{{ old('umur') }}"
+                                        placeholder="cth: 3"
+                                        min="0"
+                                        class="owner-form-control {{ $errors->has('umur') ? 'is-invalid' : '' }}"
+                                        required
+                                    >
+                                </div>
+                            </div>
+
+                            {{-- ROW 3: Warna + Harga --}}
+                            <div class="owner-form-row">
+                                <div class="owner-form-group">
+                                    <label for="warna">Warna</label>
+                                    <input
+                                        type="text"
+                                        id="warna"
+                                        name="warna"
+                                        value="{{ old('warna') }}"
+                                        placeholder="cth: Abu-abu putih"
+                                        class="owner-form-control {{ $errors->has('warna') ? 'is-invalid' : '' }}"
+                                        required
+                                    >
+                                </div>
+
+                                <div class="owner-form-group">
+                                    <label for="harga">Harga (Rp)</label>
+                                    <input
+                                        type="number"
+                                        id="harga"
+                                        name="harga"
+                                        value="{{ old('harga') }}"
+                                        placeholder="cth: 8000000"
+                                        min="0"
+                                        class="owner-form-control {{ $errors->has('harga') ? 'is-invalid' : '' }}"
+                                        required
+                                    >
+                                </div>
+                            </div>
+
+                            {{-- ROW 4: Foto + Status --}}
+                            <div class="owner-form-row">
+                                <div class="owner-form-group">
+                                    <label for="foto">Nama File Foto</label>
+                                    <input
+                                        type="text"
+                                        id="foto"
+                                        name="foto"
+                                        value="{{ old('foto') }}"
+                                        placeholder="cth: max.jpg"
+                                        class="owner-form-control {{ $errors->has('foto') ? 'is-invalid' : '' }}"
+                                        required
+                                    >
+                                </div>
+
+                                <div class="owner-form-group">
+                                    <label for="status_ketersediaan">Status Ketersediaan</label>
+                                    <select
+                                        id="status_ketersediaan"
+                                        name="status_ketersediaan"
+                                        class="owner-form-control {{ $errors->has('status_ketersediaan') ? 'is-invalid' : '' }}"
+                                        required
+                                    >
+                                        <option value="">-- Pilih --</option>
+                                        <option value="Tersedia" {{ old('status_ketersediaan') === 'Tersedia' ? 'selected' : '' }}>Tersedia</option>
+                                        <option value="Tidak Tersedia" {{ old('status_ketersediaan') === 'Tidak Tersedia' ? 'selected' : '' }}>Tidak Tersedia</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            {{-- Kondisi --}}
+                            <div class="owner-form-group">
+                                <label for="kondisi">Kondisi / Deskripsi</label>
+                                <textarea
+                                    id="kondisi"
+                                    name="kondisi"
+                                    rows="4"
+                                    placeholder="Ceritakan kondisi dan kepribadian anabul..."
+                                    class="owner-form-control {{ $errors->has('kondisi') ? 'is-invalid' : '' }}"
+                                    required
+                                >{{ old('kondisi') }}</textarea>
+                            </div>
+
+                            {{-- ACTIONS --}}
+                            <div class="owner-form-actions">
+                                <a href="{{ route('owner.anabul.index') }}" class="owner-btn-secondary">
+                                    Batal
+                                </a>
+                                <button type="submit" class="owner-btn-primary">
+                                    <i class="fa-solid fa-plus"></i>
+                                    Simpan Anabul
+                                </button>
+                            </div>
+
+                        </form>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+        </div>
+
+    </div>
 
 </body>
 </html>

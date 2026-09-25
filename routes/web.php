@@ -32,12 +32,14 @@ Route::middleware(['role:owner'])->group(function () {
         'status_pesanan',
         'Menunggu Konfirmasi'
     )->count();
+    $recentUsers = \App\Models\User::where('role', '!=', 'owner')->latest()->take(5)->get();
 
     return view('owner.dashboard', compact(
         'totalAnabul',
         'totalCustomer',
         'totalPesanan',
-        'menungguKonfirmasi'
+        'menungguKonfirmasi',
+        'recentUsers'
     ));
     })->name('owner.dashboard');
 
